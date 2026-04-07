@@ -49,6 +49,10 @@
       margin: 0 auto;
     }
 
+    .section {
+      padding: 80px 0;
+    }
+
     .section-title {
       font-size: clamp(2rem, 4vw, 3rem);
       line-height: 1.05;
@@ -63,7 +67,8 @@
       max-width: 760px;
     }
 
-    .eyebrow {
+    .eyebrow,
+    .section-label {
       font-size: 0.82rem;
       font-weight: 700;
       text-transform: uppercase;
@@ -129,6 +134,8 @@
       font-size: 1rem;
       transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
       box-shadow: 0 10px 30px rgba(255, 107, 0, 0.28);
+      border: none;
+      cursor: pointer;
     }
 
     .btn-primary:hover {
@@ -798,10 +805,143 @@
       max-width: 920px;
     }
 
-    @media (max-width: 980px) {
-      .case-grid {
-        grid-template-columns: 1fr;
-      }
+    /* LEAD FORM */
+    .lead-form-section {
+      padding: 88px 0;
+      background:
+        radial-gradient(circle at top left, rgba(79,70,229,0.14), transparent 34%),
+        radial-gradient(circle at bottom right, rgba(190,242,100,0.08), transparent 30%),
+        #0f172a;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .lead-form-wrap {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 36px;
+      align-items: start;
+    }
+
+    .lead-form-intro {
+      color: #fff;
+    }
+
+    .lead-form-intro h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.08;
+      margin-bottom: 18px;
+      color: #ffffff;
+      max-width: 760px;
+    }
+
+    .lead-form-intro p {
+      font-size: 1.04rem;
+      line-height: 1.75;
+      color: rgba(255,255,255,0.78);
+      max-width: 760px;
+      margin-bottom: 22px;
+    }
+
+    .lead-list {
+      margin-top: 20px;
+      padding-left: 18px;
+      color: rgba(255,255,255,0.8);
+    }
+
+    .lead-list li {
+      margin-bottom: 10px;
+      line-height: 1.6;
+    }
+
+    .lead-form-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 26px;
+      padding: 28px;
+      box-shadow: 0 24px 60px rgba(0,0,0,0.28);
+      backdrop-filter: blur(10px);
+    }
+
+    .form-card-top h3 {
+      font-size: 1.45rem;
+      margin-bottom: 10px;
+      color: #ffffff;
+    }
+
+    .form-card-top p {
+      color: rgba(255,255,255,0.72);
+      line-height: 1.65;
+      margin-bottom: 22px;
+    }
+
+    .retail-check-form {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .form-row {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .form-row label {
+      font-size: 0.96rem;
+      font-weight: 600;
+      color: #ffffff;
+    }
+
+    .retail-check-form input,
+    .retail-check-form select,
+    .retail-check-form textarea {
+      width: 100%;
+      padding: 14px 16px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(15,23,42,0.78);
+      color: #ffffff;
+      font-size: 0.98rem;
+      outline: none;
+      transition: border-color 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .retail-check-form input::placeholder,
+    .retail-check-form textarea::placeholder {
+      color: rgba(255,255,255,0.42);
+    }
+
+    .retail-check-form input:focus,
+    .retail-check-form select:focus,
+    .retail-check-form textarea:focus {
+      border-color: rgba(255,107,0,0.8);
+      box-shadow: 0 0 0 4px rgba(255,107,0,0.12);
+    }
+
+    .form-alt-contact {
+      margin-top: 24px;
+      text-align: center;
+    }
+
+    .form-alt-contact p {
+      color: rgba(255,255,255,0.74);
+    }
+
+    .email-line {
+      font-weight: 700;
+      margin: 6px 0;
+      color: #ffffff;
+    }
+
+    .form-note {
+      font-size: 0.88rem;
+      line-height: 1.6;
+      color: rgba(255,255,255,0.56);
+    }
+
+    .btn-full {
+      width: 100%;
+      justify-content: center;
     }
 
     /* FINAL CTA */
@@ -810,6 +950,20 @@
       background: #eef3f7;
       color: #111;
       border-top: 1px solid #dde6ee;
+    }
+
+    .section-bridge {
+      padding: 60px 0 70px;
+      background: #ffffff;
+      text-align: center;
+    }
+
+    .bridge-text {
+      font-size: 1.05rem;
+      line-height: 1.6;
+      color: #475569;
+      max-width: 700px;
+      margin: 0 auto;
     }
 
     .final-inner {
@@ -830,26 +984,6 @@
       color: #4a5c6d;
       max-width: 780px;
       margin: 0 auto 26px;
-    }
-
-    .contact-line {
-      margin-top: 22px;
-      font-size: 1.08rem;
-      color: #13283e;
-      font-weight: 700;
-    }
-
-    .contact-line a {
-      color: #0b1f39;
-      font-weight: 800;
-      border-bottom: 2px solid rgba(255,107,0,0.35);
-      padding-bottom: 2px;
-    }
-
-    .meta-line {
-      margin-top: 10px;
-      color: #4f6070;
-      font-size: 0.96rem;
     }
 
     /* FOOTER */
@@ -894,7 +1028,9 @@
       .audience-grid,
       .services-grid,
       .advanced-grid,
-      .format-cards {
+      .format-cards,
+      .case-grid,
+      .lead-form-wrap {
         grid-template-columns: 1fr;
       }
 
@@ -905,6 +1041,10 @@
 
       .hero {
         min-height: 78vh;
+      }
+
+      .lead-form-card {
+        padding: 22px;
       }
     }
 
@@ -919,7 +1059,8 @@
       .advanced-section,
       .visual-section,
       .final-section,
-      .case-studies-section {
+      .case-studies-section,
+      .lead-form-section {
         padding: 56px 0;
       }
 
@@ -946,194 +1087,6 @@
         padding: 24px;
       }
     }
-    .lead-form-section {
-  background:
-    radial-gradient(circle at top left, rgba(79,70,229,0.14), transparent 34%),
-    radial-gradient(circle at bottom right, rgba(190,242,100,0.08), transparent 30%),
-    #0f172a;
-  border-top: 1px solid rgba(255,255,255,0.06);
-}
-
-.lead-form-wrap {
-  display: grid;
-  grid-template-columns: 1.05fr 0.95fr;
-  gap: 36px;
-  align-items: start;
-}
-
-.lead-form-intro h2 {
-  font-size: clamp(2rem, 4vw, 3rem);
-  line-height: 1.08;
-  margin-bottom: 18px;
-  color: #ffffff;
-  max-width: 760px;
-}
-
-.lead-main-text {
-  font-size: 1.06rem;
-  line-height: 1.75;
-  color: rgba(255,255,255,0.78);
-  max-width: 760px;
-  margin-bottom: 28px;
-}
-
-.lead-points {
-  display: grid;
-  gap: 16px;
-  margin-top: 8px;
-}
-
-.lead-point {
-  padding: 18px 20px;
-  border-radius: 18px;
-  background: rgba(255,255,255,0.04);
-  border: 1px solid rgba(255,255,255,0.08);
-  backdrop-filter: blur(4px);
-}
-
-.lead-point-title {
-  display: block;
-  font-weight: 700;
-  color: #ffffff;
-  margin-bottom: 6px;
-}
-
-.lead-point-text {
-  color: rgba(255,255,255,0.72);
-  line-height: 1.6;
-}
-
-.lead-form-card {
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,255,255,0.1);
-  border-radius: 26px;
-  padding: 28px;
-  box-shadow: 0 24px 60px rgba(0,0,0,0.28);
-  backdrop-filter: blur(10px);
-}
-
-.form-card-top h3 {
-  font-size: 1.45rem;
-  margin-bottom: 10px;
-  color: #ffffff;
-}
-
-.form-card-top p {
-  color: rgba(255,255,255,0.72);
-  line-height: 1.65;
-  margin-bottom: 22px;
-}
-
-.retail-check-form {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.form-row {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.form-row label {
-  font-size: 0.96rem;
-  font-weight: 600;
-  color: #ffffff;
-}
-
-.retail-check-form input,
-.retail-check-form select,
-.retail-check-form textarea {
-  width: 100%;
-  padding: 14px 16px;
-  border-radius: 14px;
-  border: 1px solid rgba(255,255,255,0.12);
-  background: rgba(15,23,42,0.78);
-  color: #ffffff;
-  font-size: 0.98rem;
-  outline: none;
-  transition: border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
-}
-
-.retail-check-form input::placeholder,
-.retail-check-form textarea::placeholder {
-  color: rgba(255,255,255,0.42);
-}
-
-.retail-check-form input:focus,
-.retail-check-form select:focus,
-.retail-check-form textarea:focus {
-  border-color: rgba(255,107,0,0.8);
-  box-shadow: 0 0 0 4px rgba(255,107,0,0.12);
-}
-
-.form-note {
-  font-size: 0.88rem;
-  line-height: 1.6;
-  color: rgba(255,255,255,0.56);
-}
-
-.btn-full {
-  width: 100%;
-  justify-content: center;
-}
-
-@media (max-width: 980px) {
-  .lead-form-wrap {
-    grid-template-columns: 1fr;
-    gap: 28px;
-  }
-
-  .lead-form-card {
-    padding: 22px;
-  }
-}
-  /* === LISTA SOLICITARE === */  
-.lead-list {
-  margin-top: 20px;
-  padding-left: 18px;
-  color: rgba(255,255,255,0.8);
-}
-
-.lead-list li {
-  margin-bottom: 10px;
-  line-height: 1.6;
-}
- .form-section {
-  background: #ffffff;
-  padding: 100px 0;
-}
-
-.form-wrapper {
-  max-width: 720px;
-  margin: 0 auto;
-}
-
-.form-alt-contact {
-  margin-top: 24px;
-  text-align: center;
-}
-
-.email-line {
-  font-weight: 700;
-  margin: 6px 0;
-  color: #0f172a;
-  }  
-.section-bridge {
-  padding: 60px 0 70px;
-  background: #ffffff;
-  text-align: center;
-}
-
-.bridge-text {
-  font-size: 1.05rem;
-  line-height: 1.6;
-  color: #475569;
-  max-width: 700px;
-  margin: 0 auto;
-}
-    
   </style>
 </head>
 <body>
@@ -1340,7 +1293,6 @@
         </div>
       </div>
 
-      <!-- CASE STUDIES TOGGLE BOX -->
       <div class="atypical-box">
         <div>
           <h3>Do you want to see how this works in practice?</h3>
@@ -1352,7 +1304,6 @@
         </button>
       </div>
 
-      <!-- CASE STUDIES -->
       <section class="case-studies-section" id="caseStudies" style="display: none;">
         <div class="container">
           <div class="case-header">
@@ -1364,7 +1315,6 @@
           </div>
 
           <div class="case-grid">
-            <!-- CASE 1 -->
             <article class="case-card">
               <div class="case-tag execution">Execution</div>
               <h3>Eliminating hidden losses caused by weak in-store execution</h3>
@@ -1402,7 +1352,6 @@
               </div>
             </article>
 
-            <!-- CASE 2 -->
             <article class="case-card">
               <div class="case-tag strategy">Strategy</div>
               <h3>Aligning price and margin before market entry</h3>
@@ -1445,7 +1394,6 @@
               </div>
             </article>
 
-            <!-- CASE 3 -->
             <article class="case-card">
               <div class="case-tag control">Control</div>
               <h3>Protecting market share through continuous execution monitoring</h3>
@@ -1499,7 +1447,6 @@
         </div>
       </section>
 
-      <!-- ATYPICAL BOX -->
       <div class="atypical-box case-box">
         <div>
           <h3>Do you have an atypical situation?</h3>
@@ -1675,120 +1622,97 @@
     </div>
   </section>
 
-<section class="section lead-form-section" id="request-audit">
-  <div class="container">
-    <div class="lead-form-wrap">
-      
-      <div class="lead-form-intro">
-       <div class="section-label">Request</div>
+  <!-- FORM -->
+  <section class="lead-form-section" id="request-audit">
+    <div class="container">
+      <div class="lead-form-wrap">
 
-<h2>Request a confidential discussion about in-store execution.</h2>
+        <div class="lead-form-intro">
+          <div class="section-label">Request</div>
 
-<p>
-If you see signals that execution, availability, pricing or visibility in-store
-do not match what you see in reports, we can quickly assess the situation
-and determine whether Retail Check is the right intervention.
-</p>
+          <h2>Request a confidential discussion about in-store execution.</h2>
 
-<ul class="lead-list">
-  <li><strong>No generic presentations.</strong> Applied discussion on your real market situation.</li>
-  <li><strong>No automatic engagement.</strong> We first clarify whether the audit makes sense for you.</li>
-  <li><strong>Confidential.</strong> All information remains strictly between us.</li>
-</ul>
-
-      <div class="lead-form-card">
-        <div class="form-card-top">
-          <h3>Request an initial assessment</h3>
           <p>
-            Share a few details and I will come back with a clear recommendation
-      on fit, format, and the next best step.
+            If you see signals that execution, availability, pricing or visibility in-store
+            do not match what you see in reports, we can quickly assess the situation
+            and determine whether Retail Check is the right intervention.
           </p>
-        </div>
+
+          <ul class="lead-list">
+            <li><strong>No generic presentations.</strong> Applied discussion on your real market situation.</li>
+            <li><strong>No automatic engagement.</strong> We first clarify whether the audit makes sense for you.</li>
+            <li><strong>Confidential.</strong> All information remains strictly between us.</li>
+          </ul>
         </div>
 
-        <form action="https://formspree.io/f/mqegnrej" method="POST" class="retail-check-form">
-          <input type="hidden" name="_subject" value="New Retail Check request">
-          <input type="hidden" name="_value="dan.v.chiculita@gmail.com">
-
-         <section class="section form-section">
-  <div class="container">
-
-    <div class="form-wrapper">
-      <div class="lead-form-card">
-
-        <div class="form-card-top">
-          <h3>Request an initial assessment</h3>
-          <p>
-            Share a few details and I will come back with a clear recommendation
-            on fit, format, and the next best step.
-          </p>
-        </div>
-
-        <form action="https://formspree.io/f/mqegnrej" method="POST" class="retail-check-form">
-          <input type="hidden" name="_subject" value="New Retail Check request">
-
-          <div class="form-row">
-            <label>Name</label>
-            <input type="text" name="Name" placeholder="Your name" required>
+        <div class="lead-form-card">
+          <div class="form-card-top">
+            <h3>Request an initial assessment</h3>
+            <p>
+              Share a few details and I will come back with a clear recommendation
+              on fit, format, and the next best step.
+            </p>
           </div>
 
-          <div class="form-row">
-            <label>Company</label>
-            <input type="text" name="Company" placeholder="Company name">
+          <form action="https://formspree.io/f/mqegnrej" method="POST" class="retail-check-form">
+            <input type="hidden" name="_subject" value="New Retail Check request">
+            <input type="hidden" name="_cc" value="dan.v.chiculita@gmail.com">
+
+            <div class="form-row">
+              <label for="name">Name</label>
+              <input id="name" type="text" name="Name" placeholder="Your name" required>
+            </div>
+
+            <div class="form-row">
+              <label for="company">Company</label>
+              <input id="company" type="text" name="Company" placeholder="Company name">
+            </div>
+
+            <div class="form-row">
+              <label for="email">Email</label>
+              <input id="email" type="email" name="Email" placeholder="name@company.com" required>
+            </div>
+
+            <div class="form-row">
+              <label for="phone">Phone</label>
+              <input id="phone" type="text" name="Phone" placeholder="+40 xxx xxx xxx">
+            </div>
+
+            <div class="form-row">
+              <label for="interest">What are you interested in?</label>
+              <select id="interest" name="Interest" required>
+                <option value="">Select an option</option>
+                <option>Retail Check (one-time)</option>
+                <option>Retail Monitoring (recurring)</option>
+                <option>Availability / OOS audit</option>
+                <option>Pricing / promotion / execution audit</option>
+                <option>I need a clarification call</option>
+              </select>
+            </div>
+
+            <div class="form-row">
+              <label for="message">Brief context</label>
+              <textarea id="message" name="Message" rows="5" placeholder="Describe the situation briefly..." required></textarea>
+            </div>
+
+            <button type="submit" class="btn-primary btn-full">
+              Submit request
+            </button>
+          </form>
+
+          <div class="form-alt-contact">
+            <p>Prefer email? Write directly:</p>
+            <p class="email-line">dan.v.chiculita@gmail.com</p>
+            <p class="form-note">
+              I reply within 24–48h · Full confidentiality.
+            </p>
           </div>
-
-          <div class="form-row">
-            <label>Email</label>
-            <input type="email" name="Email" placeholder="name@company.com" required>
-          </div>
-
-          <div class="form-row">
-            <label>Phone</label>
-            <input type="text" name="Phone" placeholder="+40 xxx xxx xxx">
-          </div>
-
-          <div class="form-row">
-            <label>What are you interested in?</label>
-            <select name="Interest" required>
-              <option value="">Select an option</option>
-              <option>Retail Check (one-time)</option>
-              <option>Retail Monitoring (recurring)</option>
-              <option>Availability / OOS audit</option>
-              <option>Pricing / promotion / execution audit</option>
-              <option>I need a clarification call</option>
-            </select>
-          </div>
-
-          <div class="form-row">
-            <label>Brief context</label>
-            <textarea name="Message" rows="5" placeholder="Describe the situation briefly..." required></textarea>
-          </div>
-
-          <button type="submit" class="btn btn-primary btn-full">
-            Submit request
-          </button>
-
-        </form>
-
-        <!-- alternativa email -->
-        <div class="form-alt-contact">
-          <p>
-            Prefer email? Write directly:
-          </p>
-          <p class="email-line">
-            dan.v.chiculita@gmail.com
-          </p>
-          <p class="form-note">
-            I reply within 24–48h · Full confidentiality.
-          </p>
         </div>
 
       </div>
     </div>
+  </section>
 
-  </div>
-</section>
-  
   <!-- FINAL CTA -->
   <section class="final-section section-bridge">
     <div class="container final-inner">
@@ -1797,8 +1721,6 @@ and determine whether Retail Check is the right intervention.
       <p class="hook">
         Most companies do not lose control overnight. They lose it gradually — without realizing it.
       </p>
-
-     </div>
     </div>
   </section>
 
