@@ -1192,6 +1192,32 @@
   line-height: 1.65;
   color: rgba(255,255,255,0.86);
 }  
+    color: rgba(255,255,255,0.75);
+}
+
+/* 🔥 HOVER DIFERENTIAT */
+.request-card:nth-child(1):hover {
+  border-color: rgba(255,107,0,0.6);
+  box-shadow: 0 12px 28px rgba(255,107,0,0.15);
+  transform: translateY(-4px);
+}
+
+.request-card:nth-child(2):hover {
+  border-color: rgba(79,70,229,0.6);
+  box-shadow: 0 12px 28px rgba(79,70,229,0.15);
+  transform: translateY(-4px);
+}
+
+.request-card:nth-child(3):hover {
+  border-color: rgba(190,242,100,0.5);
+  box-shadow: 0 12px 28px rgba(190,242,100,0.12);
+  transform: translateY(-4px);
+}
+    @media (max-width: 900px) {
+  .request-grid {
+    grid-template-columns: 1fr;
+  }
+}
   </style>
 </head>
 <body>
@@ -1742,11 +1768,24 @@
         and determine whether Retail Check is the right intervention.
       </p>
 
-      <ul class="lead-list">
-        <li><strong>No generic presentations.</strong> Applied discussion on your real market situation.</li>
-        <li><strong>No automatic engagement.</strong> We first clarify whether the audit makes sense for you.</li>
-        <li><strong>Confidential.</strong> All information remains strictly between us.</li>
-      </ul>
+      <div class="request-grid">
+
+  <div class="request-card">
+    <strong>No generic presentations.</strong>
+    <p>Applied discussion on your real market situation.</p>
+  </div>
+
+  <div class="request-card">
+    <strong>No automatic engagement.</strong>
+    <p>We first clarify whether the audit makes sense for you.</p>
+  </div>
+
+  <div class="request-card">
+    <strong>Confidential.</strong>
+    <p>All information remains strictly between us.</p>
+  </div>
+
+</div>
     </div>
   </div>
 </section>
