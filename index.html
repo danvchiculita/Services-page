@@ -1287,20 +1287,7 @@
   margin: 40px auto 0;
   max-width: 1000px;
 }
-.request-card:first-child {
-  border: 1px solid rgba(79,70,229,0.9);
-  position: relative;
-}
-  .request-card:first-child::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 20px;
-  bottom: 20px;
-  width: 3px;
-  background: #4F46E5;
-  border-radius: 2px;
-}  
+ 
 .request-card:hover {
   border: 1px solid rgba(255,255,255,0.2);
   background: rgba(255,255,255,0.03);
@@ -1410,6 +1397,21 @@
     min-height: auto;
   }
 }  
+    .request-grid {
+  grid-template-columns: repeat(3, minmax(280px, 1fr));
+  max-width: 1180px;
+}
+
+.request-card {
+  min-height: 188px;
+}
+
+.request-card:nth-child(3):hover {
+  border-color: rgba(190,242,100,0.6);
+  background: rgba(190,242,100,0.08);
+  box-shadow: 0 16px 34px rgba(190,242,100,0.12);
+  transform: translateY(-4px);
+}
   </style>
 </head>
 <body>
