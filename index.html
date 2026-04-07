@@ -72,6 +72,10 @@
       margin-bottom: 12px;
     }
 
+    .notranslate {
+      white-space: nowrap;
+    }
+
     /* HERO */
     .hero {
       min-height: 88vh;
@@ -107,6 +111,10 @@
       max-width: 820px;
       margin: 0 auto;
       line-height: 1.35;
+    }
+
+    .cta-wrap {
+      margin-top: 36px;
     }
 
     .btn-primary {
@@ -160,6 +168,9 @@
       padding: 28px;
       transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
       box-shadow: 0 8px 26px rgba(0,0,0,0.12);
+      display: flex;
+      flex-direction: column;
+      height: 100%;
     }
 
     .aud-card:hover {
@@ -226,7 +237,9 @@
       border-radius: 10px;
       cursor: pointer;
       transition: background 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+      margin-top: auto;
       margin-bottom: 14px;
+      align-self: flex-start;
     }
 
     .aud-card.local .toggle-btn {
@@ -265,6 +278,58 @@
     .services-section {
       padding: 72px 0;
       background: linear-gradient(180deg, #16253f 0%, #101c31 100%);
+    }
+
+    .audit-entry {
+      margin-bottom: 34px;
+      padding: 28px;
+      border-radius: 22px;
+      background: linear-gradient(135deg, rgba(255,255,255,0.06) 0%, rgba(255,107,0,0.10) 100%);
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: 0 12px 28px rgba(0,0,0,0.14);
+    }
+
+    .audit-entry-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 22px;
+      flex-wrap: wrap;
+    }
+
+    .audit-entry-copy {
+      max-width: 760px;
+    }
+
+    .audit-entry-copy h3 {
+      font-size: 1.55rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 8px;
+    }
+
+    .audit-entry-copy p {
+      color: #d7e1eb;
+      font-size: 1rem;
+      margin-bottom: 12px;
+    }
+
+    .audit-points {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .audit-points span {
+      display: inline-flex;
+      align-items: center;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.10);
+      color: #f3f7fb;
+      font-size: 0.92rem;
+      font-weight: 600;
     }
 
     .services-header {
@@ -386,6 +451,7 @@
       border-color: rgba(79,70,229,0.48);
       box-shadow: 0 18px 40px rgba(79,70,229,0.16);
     }
+
     .atypical-box h3 {
       font-size: 1.25rem;
       margin-bottom: 5px;
@@ -593,6 +659,7 @@
       color: #58697b;
       font-size: 0.98rem;
     }
+
     /* CASE STUDIES */
     .case-studies-section {
       padding: 80px 0;
@@ -736,6 +803,7 @@
         grid-template-columns: 1fr;
       }
     }
+
     /* FINAL CTA */
     .final-section {
       padding: 80px 0;
@@ -830,6 +898,11 @@
         grid-template-columns: 1fr;
       }
 
+      .audit-entry-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
       .hero {
         min-height: 78vh;
       }
@@ -845,7 +918,8 @@
       .services-section,
       .advanced-section,
       .visual-section,
-      .final-section {
+      .final-section,
+      .case-studies-section {
         padding: 56px 0;
       }
 
@@ -887,7 +961,7 @@
 
       <div class="cta-wrap">
         <a href="mailto:dan.v.chiculita@gmail.com?subject=Retail%20Check" class="btn-primary">
-          Request a Retail Check
+          <span>Request a</span>&nbsp;<span class="notranslate" translate="no">Retail Check</span>
         </a>
       </div>
     </div>
@@ -912,7 +986,7 @@
             You don’t have a local team and you can’t see what is happening in stores.
           </p>
 
-          <button class="toggle-btn" onclick="toggleBlock('aud1', this)">See how it helps</button>
+          <button class="toggle-btn" onclick="toggleBlock('aud1', this, event)">See how it helps</button>
 
           <div class="aud-more" id="aud1">
             <p><strong>• No local team in Romania</strong><br>
@@ -933,7 +1007,7 @@
             You have field teams, but you are not sure you see the full reality.
           </p>
 
-          <button class="toggle-btn" onclick="toggleBlock('aud2', this)">See how it helps</button>
+          <button class="toggle-btn" onclick="toggleBlock('aud2', this, event)">See how it helps</button>
 
           <div class="aud-more" id="aud2">
             <p><strong>• You have a field team</strong><br>
@@ -954,6 +1028,31 @@
   <!-- SERVICES -->
   <section class="services-section">
     <div class="container">
+
+      <div class="audit-entry">
+        <div class="audit-entry-inner">
+          <div class="audit-entry-copy">
+            <div class="eyebrow">Recommended starting point</div>
+            <h3>Audit Comercial Express – 90 minutes</h3>
+            <p>
+              When the problem is not yet fully clear, start with a focused diagnostic.
+              It helps you see where execution breaks, where reports diverge from reality,
+              and what deserves immediate action.
+            </p>
+
+            <div class="audit-points">
+              <span>Execution gaps</span>
+              <span>Reality vs reports</span>
+              <span>Immediate priorities</span>
+            </div>
+          </div>
+
+          <a href="https://danvchiculita.github.io/Diagnostic/" class="btn-primary">
+            See the 90-minute audit
+          </a>
+        </div>
+      </div>
+
       <div class="services-header">
         <h2 class="section-title">Commercial control services</h2>
         <p class="section-subtitle">
@@ -1052,171 +1151,175 @@
           </div>
         </div>
       </div>
-<!-- CASE STUDIES TOGGLE BOX -->
-<div class="atypical-box">
-  <div>
-    <h3>Do you want to see how this works in practice?</h3>
-    <p>Three concise examples showing how execution, pricing and control affect real commercial outcomes in retail.</p>
-  </div>
 
-  <button type="button" class="btn-secondary" id="caseToggleBtn" onclick="toggleCaseStudies(this)">
-    Vezi exemple de cazuri
-  </button>
-</div>
-  <!-- CASE STUDIES -->
-<section class="case-studies-section" id="caseStudies" style="display: none;">                                                                                       <div class="container">
-      <div class="case-header">
-        <div class="eyebrow">Selected case examples</div>
-        <h2 class="section-title">How this works in practice</h2>
-        <p class="section-subtitle">
-          Three examples of how execution, pricing and control affect real commercial outcomes in retail.
-        </p>
+      <!-- CASE STUDIES TOGGLE BOX -->
+      <div class="atypical-box">
+        <div>
+          <h3>Do you want to see how this works in practice?</h3>
+          <p>Three concise examples showing how execution, pricing and control affect real commercial outcomes in retail.</p>
+        </div>
+
+        <button type="button" class="btn-secondary" id="caseToggleBtn" onclick="toggleCaseStudies(this)">
+          See case examples
+        </button>
       </div>
 
-      <div class="case-grid">
-        <!-- CASE 1 -->
-        <article class="case-card">
-          <div class="case-tag execution">Execution</div>
-          <h3>Eliminating hidden losses caused by weak in-store execution</h3>
-
-          <div class="case-block">
-            <span class="case-label">Challenge</span>
-            <p class="case-text">
-              A supplier was facing underperforming sales, although internal reporting suggested that listing and stock levels were in place.
+      <!-- CASE STUDIES -->
+      <section class="case-studies-section" id="caseStudies" style="display: none;">
+        <div class="container">
+          <div class="case-header">
+            <div class="eyebrow">Selected case examples</div>
+            <h2 class="section-title">How this works in practice</h2>
+            <p class="section-subtitle">
+              Three examples of how execution, pricing and control affect real commercial outcomes in retail.
             </p>
           </div>
 
-          <div class="case-block">
-            <span class="case-label">What we found</span>
-            <ul class="case-list">
-              <li>25% of listed SKUs were physically missing from shelf, despite appearing as “in stock” in the store system</li>
-              <li>Planogram compliance was only 60%, with products often compressed or moved to lower shelves</li>
-              <li>Backroom stock was not being transferred to shelf on time due to internal replenishment issues</li>
-            </ul>
+          <div class="case-grid">
+            <!-- CASE 1 -->
+            <article class="case-card">
+              <div class="case-tag execution">Execution</div>
+              <h3>Eliminating hidden losses caused by weak in-store execution</h3>
+
+              <div class="case-block">
+                <span class="case-label">Challenge</span>
+                <p class="case-text">
+                  A supplier was facing underperforming sales, although internal reporting suggested that listing and stock levels were in place.
+                </p>
+              </div>
+
+              <div class="case-block">
+                <span class="case-label">What we found</span>
+                <ul class="case-list">
+                  <li>25% of listed SKUs were physically missing from shelf, despite appearing as “in stock” in the store system</li>
+                  <li>Planogram compliance was only 60%, with products often compressed or moved to lower shelves</li>
+                  <li>Backroom stock was not being transferred to shelf on time due to internal replenishment issues</li>
+                </ul>
+              </div>
+
+              <div class="case-block">
+                <span class="case-label">Actions & results</span>
+                <ul class="case-list">
+                  <li>Operational bottlenecks in the replenishment flow were identified, and a simple rapid-alert mechanism was defined together with the client’s team</li>
+                  <li>Store-level reaction time was significantly improved through corrective action on shelf execution</li>
+                  <li>In parallel, bottlenecks in the supply cycle were removed by optimizing the replenishment flow</li>
+                  <li>Execution deviations were clarified and alignment with agreed standards was restored</li>
+                  <li>Planogram compliance returned to 95% within the first 30 days</li>
+                </ul>
+              </div>
+
+              <div class="case-impact">
+                <span class="case-label">Impact</span>
+                <p>A direct 12–15% uplift in sales was achieved simply by restoring product availability at shelf.</p>
+              </div>
+            </article>
+
+            <!-- CASE 2 -->
+            <article class="case-card">
+              <div class="case-tag strategy">Strategy</div>
+              <h3>Aligning price and margin before market entry</h3>
+
+              <div class="case-block">
+                <span class="case-label">Context</span>
+                <p class="case-text">
+                  The client was preparing for listing in a major retail chain, relying on theoretical assumptions regarding price positioning and category dynamics. Real-market validation was required to avoid a structurally unprofitable entry.
+                </p>
+              </div>
+
+              <div class="case-block">
+                <span class="case-label">What we did</span>
+                <ul class="case-list">
+                  <li>Conducted comparative shelf analysis across relevant modern trade channels</li>
+                  <li>Mapped the price architecture of the category (entry, mid, premium) and defined the real market benchmark</li>
+                  <li>Assessed promotional intensity through field observation and historical review of promotional catalogues over recent months</li>
+                </ul>
+              </div>
+
+              <div class="case-block">
+                <span class="case-label">What we found</span>
+                <ul class="case-list">
+                  <li>Promotional pressure was approximately 20% higher than initially expected</li>
+                  <li>The planned price positioning was not aligned with the actual competitive reality in market</li>
+                </ul>
+              </div>
+
+              <div class="case-block">
+                <span class="case-label">Actions & results</span>
+                <ul class="case-list">
+                  <li>The reference price was adjusted by +7% to reflect real competitive dynamics</li>
+                  <li>The client entered negotiation based on market reality rather than internal assumptions</li>
+                </ul>
+              </div>
+
+              <div class="case-impact">
+                <span class="case-label">Impact</span>
+                <p>An estimated ~15% revenue loss was avoided by correcting price positioning before listing.</p>
+              </div>
+            </article>
+
+            <!-- CASE 3 -->
+            <article class="case-card">
+              <div class="case-tag control">Control</div>
+              <h3>Protecting market share through continuous execution monitoring</h3>
+
+              <div class="case-block">
+                <span class="case-label">Context</span>
+                <p class="case-text">
+                  After the initial success of the listing, shelf performance began to deteriorate gradually. The client was at risk of losing premium positioning and negotiated shelf space.
+                </p>
+              </div>
+
+              <div class="case-block">
+                <span class="case-label">What we monitored</span>
+                <ul class="case-list">
+                  <li>Planogram compliance over time</li>
+                  <li>Promotional execution</li>
+                  <li>Product availability during peak periods</li>
+                  <li>Competitive behavior at shelf</li>
+                </ul>
+              </div>
+
+              <div class="case-block">
+                <span class="case-label">What we found</span>
+                <ul class="case-list">
+                  <li>Progressive deterioration in planogram compliance</li>
+                  <li>Replenishment delays, particularly during weekends</li>
+                  <li>Inconsistent promotional execution in key locations</li>
+                </ul>
+              </div>
+
+              <div class="case-block">
+                <span class="case-label">Actions & results</span>
+                <ul class="case-list">
+                  <li>Critical execution deviations were identified and corrective mechanisms were activated at store and field-team level</li>
+                  <li>Promotional compliance improved from 65% to 98% through focused intervention and rapid reporting</li>
+                  <li>Product availability during critical periods was stabilized, significantly reducing the risk of Out-of-Stock</li>
+                  <li>Shelf execution was stabilized in higher-risk locations</li>
+                </ul>
+              </div>
+
+              <div class="case-impact">
+                <span class="case-label">Impact</span>
+                <p>Consistent shelf visibility was maintained, preventing shopper migration to competing brands caused by lack of availability.</p>
+              </div>
+            </article>
           </div>
 
-          <div class="case-block">
-            <span class="case-label">Actions & results</span>
-            <ul class="case-list">
-              <li>Operational bottlenecks in the replenishment flow were identified, and a simple rapid-alert mechanism was defined together with the client’s team</li>
-              <li>Store-level reaction time was significantly improved through corrective action on shelf execution</li>
-              <li>In parallel, bottlenecks in the supply cycle were removed by optimizing the replenishment flow</li>
-              <li>Execution deviations were clarified and alignment with agreed standards was restored</li>
-              <li>Planogram compliance returned to 95% within the first 30 days</li>
-            </ul>
-          </div>
+          <p class="case-closing">
+            The issue is rarely a lack of resources. It is the lack of a control and reaction mechanism.
+          </p>
+        </div>
+      </section>
 
-          <div class="case-impact">
-            <span class="case-label">Impact</span>
-            <p>A direct 12–15% uplift in sales was achieved simply by restoring product availability at shelf.</p>
-          </div>
-        </article>
-
-        <!-- CASE 2 -->
-        <article class="case-card">
-          <div class="case-tag strategy">Strategy</div>
-          <h3>Aligning price and margin before market entry</h3>
-
-          <div class="case-block">
-            <span class="case-label">Context</span>
-            <p class="case-text">
-              The client was preparing for listing in a major retail chain, relying on theoretical assumptions regarding price positioning and category dynamics. Real-market validation was required to avoid a structurally unprofitable entry.
-            </p>
-          </div>
-
-          <div class="case-block">
-            <span class="case-label">What we did</span>
-            <ul class="case-list">
-              <li>Conducted comparative shelf analysis across relevant modern trade channels</li>
-              <li>Mapped the price architecture of the category (entry, mid, premium) and defined the real market benchmark</li>
-              <li>Assessed promotional intensity through field observation and historical review of promotional catalogues over recent months</li>
-            </ul>
-          </div>
-
-          <div class="case-block">
-            <span class="case-label">What we found</span>
-            <ul class="case-list">
-              <li>Promotional pressure was approximately 20% higher than initially expected</li>
-              <li>The planned price positioning was not aligned with the actual competitive reality in market</li>
-            </ul>
-          </div>
-
-          <div class="case-block">
-            <span class="case-label">Actions & results</span>
-            <ul class="case-list">
-              <li>The reference price was adjusted by +7% to reflect real competitive dynamics</li>
-              <li>The client entered negotiation based on market reality rather than internal assumptions</li>
-            </ul>
-          </div>
-
-          <div class="case-impact">
-            <span class="case-label">Impact</span>
-            <p>An estimated ~15% revenue loss was avoided by correcting price positioning before listing.</p>
-          </div>
-        </article>
-
-        <!-- CASE 3 -->
-        <article class="case-card">
-          <div class="case-tag control">Control</div>
-          <h3>Protecting market share through continuous execution monitoring</h3>
-
-          <div class="case-block">
-            <span class="case-label">Context</span>
-            <p class="case-text">
-              After the initial success of the listing, shelf performance began to deteriorate gradually. The client was at risk of losing premium positioning and negotiated shelf space.
-            </p>
-          </div>
-
-          <div class="case-block">
-            <span class="case-label">What we monitored</span>
-            <ul class="case-list">
-              <li>Planogram compliance over time</li>
-              <li>Promotional execution</li>
-              <li>Product availability during peak periods</li>
-              <li>Competitive behavior at shelf</li>
-            </ul>
-          </div>
-
-          <div class="case-block">
-            <span class="case-label">What we found</span>
-            <ul class="case-list">
-              <li>Progressive deterioration in planogram compliance</li>
-              <li>Replenishment delays, particularly during weekends</li>
-              <li>Inconsistent promotional execution in key locations</li>
-            </ul>
-          </div>
-
-          <div class="case-block">
-            <span class="case-label">Actions & results</span>
-            <ul class="case-list">
-              <li>Critical execution deviations were identified and corrective mechanisms were activated at store and field-team level</li>
-              <li>Promotional compliance improved from 65% to 98% through focused intervention and rapid reporting</li>
-              <li>Product availability during critical periods was stabilized, significantly reducing the risk of Out-of-Stock</li>
-              <li>Shelf execution was stabilized in higher-risk locations</li>
-            </ul>
-          </div>
-
-          <div class="case-impact">
-            <span class="case-label">Impact</span>
-            <p>Consistent shelf visibility was maintained, preventing shopper migration to competing brands caused by lack of availability.</p>
-          </div>
-        </article>
-      </div>
-
-      <p class="case-closing">
-        The issue is rarely a lack of resources. It is the lack of a control and reaction mechanism.
-      </p>
-    </div>
-  </section>
       <!-- ATYPICAL BOX -->
-<div class="atypical-box case-box">
+      <div class="atypical-box case-box">
         <div>
           <h3>Do you have an atypical situation?</h3>
           <p>We can build a verification adapted to your needs and your level of complexity.</p>
         </div>
 
         <button type="button" class="btn-secondary" id="advancedToggleBtn" onclick="toggleAdvancedSection(this)">
-          Vezi verificări avansate
+          See advanced checks
         </button>
       </div>
     </div>
@@ -1235,7 +1338,7 @@
         <div class="adv-card">
           <h3>Execution & Integrity Audit</h3>
           <p class="adv-context">Real control of field execution</p>
-          <button class="adv-btn" onclick="toggleBlock('adv1', this)">See category</button>
+          <button class="adv-btn" onclick="toggleBlock('adv1', this, event)">See category</button>
 
           <div class="adv-content" id="adv1">
             <div class="adv-service">
@@ -1267,7 +1370,7 @@
         <div class="adv-card">
           <h3>Shelf Visibility & Strategy</h3>
           <p class="adv-context">The war for space and attention</p>
-          <button class="adv-btn" onclick="toggleBlock('adv2', this)">See category</button>
+          <button class="adv-btn" onclick="toggleBlock('adv2', this, event)">See category</button>
 
           <div class="adv-content" id="adv2">
             <div class="adv-service">
@@ -1299,7 +1402,7 @@
         <div class="adv-card">
           <h3>Commercial Performance & Profit</h3>
           <p class="adv-context">Where money is being lost</p>
-          <button class="adv-btn" onclick="toggleBlock('adv3', this)">See category</button>
+          <button class="adv-btn" onclick="toggleBlock('adv3', this, event)">See category</button>
 
           <div class="adv-content" id="adv3">
             <div class="adv-service">
@@ -1331,7 +1434,7 @@
         <div class="adv-card">
           <h3>Intelligence & Launches</h3>
           <p class="adv-context">Tactical moves in the market</p>
-          <button class="adv-btn" onclick="toggleBlock('adv4', this)">See category</button>
+          <button class="adv-btn" onclick="toggleBlock('adv4', this, event)">See category</button>
 
           <div class="adv-content" id="adv4">
             <div class="adv-service">
@@ -1411,9 +1514,45 @@
     </div>
   </footer>
 
-  
-<script> function toggleBlock(id, btn) { event.stopPropagation(); const target = document.getElementById(id); const isOpen = target.classList.contains('open') || target.style.display === 'block'; if (target.classList.contains('adv-content')) { target.classList.toggle('open', !isOpen); } else { target.style.display = isOpen ? 'none' : 'block'; } if (btn) { btn.classList.toggle('active', !isOpen); } } function toggleServiceCard(card) { card.classList.toggle('open'); } function toggleAdvancedSection(btn) { const section = document.getElementById('advanced'); const isVisible = section.classList.contains('is-visible'); section.classList.toggle('is-visible', !isVisible); btn.classList.toggle('active', !isVisible); btn.textContent = isVisible ? 'Vezi verificări avansate' : 'Ascunde verificări avansate'; } function toggleCaseStudies(btn) { const section = document.getElementById('caseStudies'); const isVisible = section.style.display === 'block'; section.style.display = isVisible ? 'none' : 'block'; btn.classList.toggle('active', !isVisible); btn.textContent = isVisible ? 'Vezi exemple de cazuri' : 'Ascunde exemple de cazuri'; } </script>
+  <script>
+    function toggleBlock(id, btn, ev) {
+      if (ev) ev.stopPropagation();
+
+      const target = document.getElementById(id);
+      const isOpen = target.classList.contains('open') || target.style.display === 'block';
+
+      if (target.classList.contains('adv-content')) {
+        target.classList.toggle('open', !isOpen);
+      } else {
+        target.style.display = isOpen ? 'none' : 'block';
+      }
+
+      if (btn) {
+        btn.classList.toggle('active', !isOpen);
+      }
+    }
+
+    function toggleServiceCard(card) {
+      card.classList.toggle('open');
+    }
+
+    function toggleAdvancedSection(btn) {
+      const section = document.getElementById('advanced');
+      const isVisible = section.classList.contains('is-visible');
+
+      section.classList.toggle('is-visible', !isVisible);
+      btn.classList.toggle('active', !isVisible);
+      btn.textContent = isVisible ? 'See advanced checks' : 'Hide advanced checks';
+    }
+
+    function toggleCaseStudies(btn) {
+      const section = document.getElementById('caseStudies');
+      const isVisible = section.style.display === 'block';
+
+      section.style.display = isVisible ? 'none' : 'block';
+      btn.classList.toggle('active', !isVisible);
+      btn.textContent = isVisible ? 'See case examples' : 'Hide case examples';
+    }
   </script>
 </body>
 </html>
-
