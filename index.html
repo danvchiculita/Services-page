@@ -15,11 +15,22 @@
       --orange: #FF6B00;
       --slate: #0F172A;
       --slate-2: #1E293B;
+      --slate-3: #16253f;
       --light: #F4F7FA;
-      --text-soft: #CBD5E1;
       --white: #FFFFFF;
-      --green: #BEF264;
-      --border: rgba(255,255,255,0.08);
+      --text-soft: #CBD5E1;
+      --text-muted: #93A4B6;
+      --line-dark: rgba(255,255,255,0.08);
+      --line-light: #E4EAF0;
+      --card-dark: #111F35;
+      --card-mid: #172842;
+      --shadow-dark: 0 18px 40px rgba(0,0,0,0.20);
+      --shadow-light: 0 14px 32px rgba(11,24,36,0.08);
+      --radius-xl: 26px;
+      --radius-lg: 22px;
+      --radius-md: 18px;
+      --radius-sm: 14px;
+      --container: 1180px;
     }
 
     * {
@@ -36,7 +47,9 @@
       font-family: 'Inter', sans-serif;
       background: var(--slate);
       color: var(--white);
-      line-height: 1.5;
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
     }
 
     a {
@@ -44,36 +57,45 @@
       color: inherit;
     }
 
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
     .container {
-      width: min(1180px, calc(100% - 40px));
+      width: min(var(--container), calc(100% - 40px));
       margin: 0 auto;
     }
 
     .section {
-      padding: 80px 0;
+      padding: 84px 0;
+    }
+
+    .section-header {
+      margin-bottom: 34px;
     }
 
     .section-title {
-      font-size: clamp(2rem, 4vw, 3rem);
-      line-height: 1.05;
+      font-size: clamp(2rem, 4vw, 3.1rem);
+      line-height: 1.04;
       font-weight: 800;
-      letter-spacing: -0.03em;
+      letter-spacing: -0.035em;
       margin-bottom: 14px;
     }
 
     .section-subtitle {
-      color: #d7e1eb;
-      font-size: 1.05rem;
-      max-width: 760px;
+      color: #D8E2EC;
+      font-size: 1.04rem;
+      max-width: 820px;
     }
 
     .eyebrow,
     .section-label {
-      font-size: 0.82rem;
-      font-weight: 700;
+      font-size: 0.8rem;
+      font-weight: 800;
       text-transform: uppercase;
-      letter-spacing: 0.12em;
-      color: #93a9c0;
+      letter-spacing: 0.14em;
+      color: var(--text-muted);
       margin-bottom: 12px;
     }
 
@@ -81,82 +103,184 @@
       white-space: nowrap;
     }
 
+    .btn-primary,
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      cursor: pointer;
+      border: none;
+      transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease, border-color 0.25s ease;
+      font-weight: 700;
+    }
+
+    .btn-primary {
+      padding: 15px 28px;
+      border-radius: 999px;
+      background: var(--orange);
+      color: var(--white);
+      box-shadow: 0 12px 30px rgba(255,107,0,0.26);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      background: #ff7b20;
+      box-shadow: 0 18px 38px rgba(255,107,0,0.32);
+    }
+
+    .btn-secondary {
+      padding: 12px 18px;
+      border-radius: 12px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      color: var(--white);
+    }
+
+    .btn-secondary:hover {
+      transform: translateY(-2px);
+      background: rgba(255,255,255,0.10);
+    }
+
+    .btn-secondary.active {
+      background: rgba(255,255,255,0.14);
+      box-shadow: 0 0 0 5px rgba(255,255,255,0.04);
+    }
+
     /* HERO */
     .hero {
-      min-height: 88vh;
+      min-height: 90vh;
       display: flex;
       align-items: center;
       justify-content: center;
       text-align: center;
       position: relative;
-      padding: 80px 20px;
+      padding: 90px 20px;
       background:
-        linear-gradient(rgba(9, 19, 33, 0.72), rgba(9, 19, 33, 0.72)),
+        linear-gradient(rgba(9,19,33,0.76), rgba(9,19,33,0.80)),
+        radial-gradient(circle at top left, rgba(79,70,229,0.16), transparent 28%),
+        radial-gradient(circle at bottom right, rgba(255,107,0,0.10), transparent 30%),
         url('supermarket.png') center center / cover no-repeat;
     }
 
     .hero-inner {
-      max-width: 980px;
+      max-width: 1000px;
       margin: 0 auto;
     }
 
     .hero h1 {
-      font-size: clamp(3rem, 6.6vw, 5.5rem);
-      line-height: 0.96;
+      font-size: clamp(3rem, 6.6vw, 5.7rem);
+      line-height: 0.95;
       font-weight: 800;
-      letter-spacing: -0.045em;
-      margin-bottom: 34px;
+      letter-spacing: -0.05em;
+      margin-bottom: 28px;
       text-wrap: balance;
     }
 
     .hero .subtitle {
-      font-size: clamp(1.2rem, 2.3vw, 1.6rem);
-      color: #f2f6fb;
+      font-size: clamp(1.16rem, 2.2vw, 1.55rem);
+      color: #EFF5FB;
       font-weight: 600;
-      max-width: 820px;
+      max-width: 860px;
       margin: 0 auto;
-      line-height: 1.35;
+      line-height: 1.38;
+    }
+
+    .hero-note {
+      margin: 20px auto 0;
+      max-width: 720px;
+      font-size: 1rem;
+      color: rgba(255,255,255,0.72);
+      line-height: 1.7;
     }
 
     .cta-wrap {
-      margin-top: 36px;
+      margin-top: 38px;
     }
 
-    .btn-primary {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 15px 28px;
-      border-radius: 999px;
-      background: var(--orange);
-      color: var(--white);
-      font-weight: 700;
-      font-size: 1rem;
-      transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
-      box-shadow: 0 10px 30px rgba(255, 107, 0, 0.28);
-      border: none;
-      cursor: pointer;
+    /* INTRO / WHAT IS */
+    .intro-section {
+      background: linear-gradient(180deg, #15253D 0%, #101C31 100%);
+      padding: 78px 0 76px;
     }
 
-    .btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 16px 34px rgba(255, 107, 0, 0.34);
-      background: #ff7a1f;
+    .intro-wrap {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 26px;
+      align-items: stretch;
+    }
+
+    .intro-main,
+    .intro-side {
+      border-radius: var(--radius-xl);
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: var(--shadow-dark);
+    }
+
+    .intro-main {
+      padding: 34px;
+      background: linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
+    }
+
+    .intro-main p {
+      color: #D7E2EC;
+      font-size: 1.05rem;
+      line-height: 1.78;
+      margin-bottom: 18px;
+      max-width: 780px;
+    }
+
+    .intro-main p:last-child {
+      margin-bottom: 0;
+    }
+
+    .intro-side {
+      padding: 28px;
+      background: linear-gradient(135deg, rgba(79,70,229,0.14), rgba(255,107,0,0.08));
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .intro-side h3 {
+      font-size: 1.28rem;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      margin-bottom: 8px;
+    }
+
+    .intro-side p {
+      color: #E7EEF6;
+      font-size: 0.98rem;
+      line-height: 1.7;
+    }
+
+    .signal-list {
+      display: grid;
+      gap: 10px;
+    }
+
+    .signal-item {
+      padding: 14px 16px;
+      border-radius: 14px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.08);
+      color: #F3F7FB;
+      font-size: 0.96rem;
+      font-weight: 600;
     }
 
     /* AUDIENCE */
     .audience-section {
-      padding: 74px 0 56px;
+      padding: 80px 0 62px;
       background: var(--slate);
     }
 
-    .audience-top {
-      margin-bottom: 28px;
-    }
-
     .audience-note {
-      font-size: 1.08rem;
-      color: #dbe5ef;
+      font-size: 1.05rem;
+      color: #DCE6EF;
       margin-top: 6px;
       font-weight: 500;
     }
@@ -165,46 +289,46 @@
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 22px;
-      margin-top: 24px;
+      margin-top: 26px;
     }
 
     .aud-card {
-      background: #1a2942;
-      border: 1px solid rgba(255,255,255,0.06);
-      border-radius: 22px;
+      background: var(--card-mid);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: var(--radius-lg);
       padding: 28px;
       transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
-      box-shadow: 0 8px 26px rgba(0,0,0,0.12);
+      box-shadow: 0 10px 28px rgba(0,0,0,0.14);
       display: flex;
       flex-direction: column;
-      height: 100%;
+      min-height: 100%;
     }
 
     .aud-card:hover {
       transform: translateY(-5px);
-      box-shadow: 0 18px 40px rgba(0,0,0,0.2);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.22);
     }
 
     .aud-card.external:hover {
-      border-color: rgba(79, 70, 229, 0.55);
-      box-shadow: 0 18px 42px rgba(79, 70, 229, 0.18);
+      border-color: rgba(79,70,229,0.50);
+      box-shadow: 0 20px 42px rgba(79,70,229,0.18);
     }
 
     .aud-card.local:hover {
-      border-color: rgba(255, 107, 0, 0.55);
-      box-shadow: 0 18px 42px rgba(255, 107, 0, 0.16);
+      border-color: rgba(255,107,0,0.52);
+      box-shadow: 0 20px 42px rgba(255,107,0,0.16);
     }
 
     .aud-card-head {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 12px;
       margin-bottom: 12px;
     }
 
     .aud-icon {
-      width: 36px;
-      height: 36px;
+      width: 38px;
+      height: 38px;
       border-radius: 50%;
       display: inline-flex;
       align-items: center;
@@ -212,6 +336,7 @@
       font-size: 18px;
       font-weight: 700;
       color: var(--white);
+      flex-shrink: 0;
     }
 
     .aud-card.external .aud-icon {
@@ -229,17 +354,16 @@
     }
 
     .aud-short {
-      color: #d8e3ed;
-      font-size: 1.04rem;
+      color: #D6E1EB;
+      font-size: 1.02rem;
       margin-bottom: 16px;
     }
 
     .toggle-btn {
       display: inline-block;
       border: none;
-      background: var(--indigo);
       color: var(--white);
-      font-weight: 600;
+      font-weight: 700;
       padding: 10px 16px;
       border-radius: 10px;
       cursor: pointer;
@@ -249,8 +373,12 @@
       align-self: flex-start;
     }
 
+    .aud-card.external .toggle-btn {
+      background: var(--indigo);
+    }
+
     .aud-card.local .toggle-btn {
-      background: #e56a1d;
+      background: #E56A1D;
     }
 
     .toggle-btn:hover {
@@ -265,17 +393,21 @@
 
     .aud-more {
       display: none;
-      color: #d7e1eb;
+      color: #D7E1EB;
       font-size: 0.98rem;
-      line-height: 1.6;
+      line-height: 1.68;
       border-top: 1px solid rgba(255,255,255,0.08);
       padding-top: 14px;
       margin-top: 6px;
     }
 
+    .aud-more p + p {
+      margin-top: 14px;
+    }
+
     .aud-proof {
       margin-top: 24px;
-      color: #f4f8fb;
+      color: #F4F8FB;
       font-size: 1rem;
       font-weight: 600;
       max-width: 950px;
@@ -283,77 +415,21 @@
 
     /* SERVICES */
     .services-section {
-      padding: 72px 0;
-      background: linear-gradient(180deg, #16253f 0%, #101c31 100%);
-    }
-
-    .audit-entry {
-      margin-bottom: 34px;
-      padding: 28px;
-      border-radius: 22px;
-      background: linear-gradient(135deg, rgba(255,255,255,0.06) 0%, rgba(255,107,0,0.10) 100%);
-      border: 1px solid rgba(255,255,255,0.08);
-      box-shadow: 0 12px 28px rgba(0,0,0,0.14);
-    }
-
-    .audit-entry-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 22px;
-      flex-wrap: wrap;
-    }
-
-    .audit-entry-copy {
-      max-width: 760px;
-    }
-
-    .audit-entry-copy h3 {
-      font-size: 1.55rem;
-      font-weight: 800;
-      letter-spacing: -0.02em;
-      margin-bottom: 8px;
-    }
-
-    .audit-entry-copy p {
-      color: #d7e1eb;
-      font-size: 1rem;
-      margin-bottom: 12px;
-    }
-
-    .audit-points {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-
-    .audit-points span {
-      display: inline-flex;
-      align-items: center;
-      padding: 8px 12px;
-      border-radius: 999px;
-      background: rgba(255,255,255,0.08);
-      border: 1px solid rgba(255,255,255,0.10);
-      color: #f3f7fb;
-      font-size: 0.92rem;
-      font-weight: 600;
-    }
-
-    .services-header {
-      margin-bottom: 30px;
+      padding: 78px 0;
+      background: linear-gradient(180deg, #16253F 0%, #101C31 100%);
     }
 
     .services-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 22px;
-      margin-bottom: 22px;
+      margin-top: 24px;
     }
 
     .service-card {
-      background: #111f35;
+      background: var(--card-dark);
       border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 22px;
+      border-radius: var(--radius-lg);
       padding: 26px;
       transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
       box-shadow: 0 12px 28px rgba(0,0,0,0.15);
@@ -370,18 +446,18 @@
     }
 
     .service-card.retail:hover {
-      box-shadow: 0 20px 42px rgba(255, 107, 0, 0.18);
-      border-color: rgba(255, 107, 0, 0.45);
+      box-shadow: 0 20px 42px rgba(255,107,0,0.18);
+      border-color: rgba(255,107,0,0.42);
     }
 
     .service-card.entry:hover {
-      box-shadow: 0 20px 42px rgba(79, 70, 229, 0.2);
-      border-color: rgba(79, 70, 229, 0.45);
+      box-shadow: 0 20px 42px rgba(79,70,229,0.20);
+      border-color: rgba(79,70,229,0.42);
     }
 
     .service-card.monitor:hover {
-      box-shadow: 0 20px 42px rgba(190, 242, 100, 0.12);
-      border-color: rgba(190, 242, 100, 0.28);
+      box-shadow: 0 20px 42px rgba(190,242,100,0.12);
+      border-color: rgba(190,242,100,0.28);
     }
 
     .service-card h3 {
@@ -393,13 +469,13 @@
 
     .service-tag {
       color: #ffffff;
-      font-size: 1rem;
+      font-size: 0.98rem;
       font-weight: 700;
       margin-bottom: 12px;
     }
 
     .service-card p {
-      color: #d5dfeb;
+      color: #D5DFEB;
       font-size: 1rem;
       margin-bottom: 8px;
     }
@@ -414,7 +490,7 @@
     .service-expand ul {
       padding-left: 18px;
       margin: 8px 0 12px;
-      color: #dbe5ef;
+      color: #DBE5EF;
     }
 
     .service-expand li {
@@ -422,15 +498,140 @@
     }
 
     .service-expand p {
-      color: #dbe5ef;
+      color: #DBE5EF;
+      line-height: 1.68;
     }
 
     .service-card.open .service-expand {
       display: block;
     }
 
+    /* DIAGNOSTIC ENTRY */
+    .entry-point-section {
+      padding: 78px 0;
+      background: #0E182C;
+      border-top: 1px solid rgba(255,255,255,0.05);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .entry-point-box {
+      padding: 34px;
+      border-radius: 26px;
+      background: linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,107,0,0.08));
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: var(--shadow-dark);
+    }
+
+    .entry-point-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 22px;
+      flex-wrap: wrap;
+    }
+
+    .entry-point-copy {
+      max-width: 780px;
+    }
+
+    .entry-point-copy h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.04;
+      letter-spacing: -0.03em;
+      margin-bottom: 12px;
+    }
+
+    .entry-point-copy p {
+      color: #D9E4EE;
+      font-size: 1.03rem;
+      line-height: 1.75;
+      margin-bottom: 14px;
+    }
+
+    .audit-points {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .audit-points span {
+      display: inline-flex;
+      align-items: center;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.10);
+      color: #F3F7FB;
+      font-size: 0.92rem;
+      font-weight: 700;
+    }
+
+    /* FORMAT */
+    .visual-section {
+      padding: 80px 0;
+      background: #EEF3F7;
+      color: #111;
+    }
+
+    .visual-content {
+      width: min(var(--container), calc(100% - 40px));
+      margin: 0 auto;
+      background: #FFFFFF;
+      border: 1px solid #E3EAF0;
+      border-radius: 26px;
+      padding: 34px;
+      box-shadow: 0 16px 40px rgba(11,24,36,0.08);
+    }
+
+    .visual-content h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.04;
+      letter-spacing: -0.03em;
+      margin-bottom: 14px;
+    }
+
+    .visual-content .lead {
+      color: #536577;
+      font-size: 1.05rem;
+      margin-bottom: 24px;
+      max-width: 760px;
+      line-height: 1.74;
+    }
+
+    .format-cards {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .format-card {
+      padding: 24px;
+      border-radius: 18px;
+      background: #F7FAFC;
+      border: 1px solid #E3EAF0;
+    }
+
+    .format-card h3 {
+      font-size: 1.16rem;
+      margin-bottom: 8px;
+      color: #111;
+    }
+
+    .format-card p {
+      color: #58697B;
+      font-size: 0.98rem;
+      line-height: 1.68;
+    }
+
+    /* CASE + ADVANCED TOGGLES */
+    .toggle-boxes-wrap {
+      margin-top: 28px;
+      display: grid;
+      gap: 16px;
+    }
+
     .atypical-box {
-      margin-top: 14px;
       padding: 22px 24px;
       border-radius: 18px;
       background: linear-gradient(90deg, rgba(255,107,0,0.16) 0%, rgba(255,107,0,0.10) 100%);
@@ -460,220 +661,28 @@
     }
 
     .atypical-box h3 {
-      font-size: 1.25rem;
+      font-size: 1.24rem;
       margin-bottom: 5px;
     }
 
     .atypical-box p {
-      color: #e7edf4;
+      color: #E7EDF4;
       max-width: 760px;
-    }
-
-    .btn-secondary {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 12px 18px;
-      border-radius: 12px;
-      background: rgba(255,255,255,0.08);
-      border: 1px solid rgba(255,255,255,0.14);
-      color: var(--white);
-      font-weight: 700;
-      transition: all 0.25s ease;
-      cursor: pointer;
-    }
-
-    .btn-secondary:hover {
-      background: rgba(255,255,255,0.12);
-      transform: translateY(-2px);
-    }
-
-    .btn-secondary.active {
-      background: rgba(255,255,255,0.16);
-      box-shadow: 0 0 0 5px rgba(255,255,255,0.04);
-    }
-
-    /* ADVANCED */
-    .advanced-section {
-      display: none;
-      padding: 74px 0;
-      background: var(--light);
-      color: #111;
-    }
-
-    .advanced-section.is-visible {
-      display: block;
-    }
-
-    .advanced-section .section-subtitle {
-      color: #4a5c6d;
-    }
-
-    .advanced-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 22px;
-      margin-top: 30px;
-    }
-
-    .adv-card {
-      background: #ffffff;
-      border: 1px solid #e4eaf0;
-      border-radius: 22px;
-      padding: 24px;
-      box-shadow: 0 10px 26px rgba(11, 24, 36, 0.06);
-      transition: all 0.25s ease;
-    }
-
-    .adv-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 18px 40px rgba(11, 24, 36, 0.1);
-      border-color: #d5dee7;
-    }
-
-    .adv-card h3 {
-      font-size: 1.35rem;
-      font-weight: 800;
-      margin-bottom: 8px;
-      letter-spacing: -0.02em;
-    }
-
-    .adv-card .adv-context {
-      color: #5d6f7f;
-      margin-bottom: 14px;
-      font-size: 0.98rem;
-      font-weight: 500;
-    }
-
-    .adv-btn {
-      display: inline-block;
-      border: none;
-      background: var(--slate);
-      color: var(--white);
-      border-radius: 10px;
-      padding: 10px 16px;
-      font-weight: 700;
-      cursor: pointer;
-      transition: all 0.25s ease;
-      margin-bottom: 14px;
-    }
-
-    .adv-btn:hover {
-      background: #1b2b44;
-      box-shadow: 0 10px 22px rgba(11, 24, 36, 0.12);
-    }
-
-    .adv-btn.active {
-      background: var(--orange);
-      box-shadow: 0 10px 24px rgba(255, 107, 0, 0.18);
-    }
-
-    .adv-content {
-      display: none;
-      border-top: 1px solid #e8edf2;
-      padding-top: 14px;
-      margin-top: 6px;
-    }
-
-    .adv-content.open {
-      display: block;
-    }
-
-    .adv-service {
-      padding: 12px 0;
-      border-bottom: 1px solid #edf2f6;
-    }
-
-    .adv-service:last-child {
-      border-bottom: none;
-    }
-
-    .adv-service h4 {
-      font-size: 1.03rem;
-      margin-bottom: 6px;
-      color: #111;
-    }
-
-    .adv-service p {
-      color: #5a6b7a;
-      font-size: 0.95rem;
-      margin-bottom: 4px;
-    }
-
-    .adv-service .impact {
-      color: #16263a;
-      font-weight: 700;
-    }
-
-    .advanced-final {
-      margin-top: 24px;
-      color: #243648;
-      font-weight: 700;
-      font-size: 1rem;
-    }
-
-    /* FORMAT SECTION */
-    .visual-section {
-      padding: 80px 0;
-      background: #eef3f7;
-      color: #111;
-    }
-
-    .visual-content {
-      width: min(1180px, calc(100% - 40px));
-      margin: 0 auto;
-      background: #ffffff;
-      border: 1px solid #e3eaf0;
-      border-radius: 26px;
-      padding: 34px;
-      box-shadow: 0 16px 40px rgba(11, 24, 36, 0.08);
-    }
-
-    .visual-content h2 {
-      font-size: clamp(2rem, 4vw, 3rem);
-      line-height: 1.04;
-      letter-spacing: -0.03em;
-      margin-bottom: 14px;
-    }
-
-    .visual-content .lead {
-      color: #536577;
-      font-size: 1.06rem;
-      margin-bottom: 24px;
-      max-width: 720px;
-    }
-
-    .format-cards {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 18px;
-    }
-
-    .format-card {
-      padding: 24px;
-      border-radius: 18px;
-      background: #f7fafc;
-      border: 1px solid #e3eaf0;
-    }
-
-    .format-card h3 {
-      font-size: 1.16rem;
-      margin-bottom: 8px;
-      color: #111;
-    }
-
-    .format-card p {
-      color: #58697b;
-      font-size: 0.98rem;
+      line-height: 1.7;
     }
 
     /* CASE STUDIES */
     .case-studies-section {
+      display: none;
       padding: 80px 0;
-      background: #f4f7fa;
+      background: #F4F7FA;
       color: #111;
-      border-top: 1px solid #e1e8ef;
-      border-bottom: 1px solid #e1e8ef;
+      border-top: 1px solid #E1E8EF;
+      border-bottom: 1px solid #E1E8EF;
+    }
+
+    .case-studies-section.is-visible {
+      display: block;
     }
 
     .case-header {
@@ -681,7 +690,7 @@
     }
 
     .case-header .section-subtitle {
-      color: #58697b;
+      color: #58697B;
       max-width: 860px;
     }
 
@@ -692,18 +701,18 @@
     }
 
     .case-card {
-      background: #ffffff;
-      border: 1px solid #e3eaf0;
+      background: #FFFFFF;
+      border: 1px solid #E3EAF0;
       border-radius: 22px;
       padding: 26px;
-      box-shadow: 0 10px 28px rgba(11, 24, 36, 0.06);
+      box-shadow: var(--shadow-light);
       transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
     }
 
     .case-card:hover {
       transform: translateY(-4px);
-      box-shadow: 0 18px 40px rgba(11, 24, 36, 0.10);
-      border-color: #d7e0e8;
+      box-shadow: 0 18px 40px rgba(11,24,36,0.10);
+      border-color: #D7E0E8;
     }
 
     .case-tag {
@@ -721,21 +730,21 @@
 
     .case-tag.execution {
       background: rgba(255,107,0,0.12);
-      color: #b65212;
+      color: #B65212;
     }
 
     .case-tag.strategy {
       background: rgba(79,70,229,0.10);
-      color: #3d37b8;
+      color: #3D37B8;
     }
 
     .case-tag.control {
-      background: rgba(88, 140, 90, 0.12);
-      color: #2f6b34;
+      background: rgba(88,140,90,0.12);
+      color: #2F6B34;
     }
 
     .case-card h3 {
-      font-size: 1.3rem;
+      font-size: 1.28rem;
       line-height: 1.15;
       letter-spacing: -0.02em;
       margin-bottom: 14px;
@@ -746,22 +755,18 @@
       margin-bottom: 16px;
     }
 
-    .case-block:last-child {
-      margin-bottom: 0;
-    }
-
     .case-label {
       display: block;
       font-size: 0.82rem;
       font-weight: 800;
       text-transform: uppercase;
       letter-spacing: 0.08em;
-      color: #6b7c8d;
+      color: #6B7C8D;
       margin-bottom: 8px;
     }
 
     .case-text {
-      color: #4d5f70;
+      color: #4D5F70;
       font-size: 0.98rem;
       line-height: 1.6;
     }
@@ -769,7 +774,7 @@
     .case-list {
       padding-left: 18px;
       margin: 0;
-      color: #4d5f70;
+      color: #4D5F70;
     }
 
     .case-list li {
@@ -781,8 +786,8 @@
       margin-top: 18px;
       padding: 16px 18px;
       border-radius: 16px;
-      background: #f8fbfd;
-      border: 1px solid #e5edf3;
+      background: #F8FBFD;
+      border: 1px solid #E5EDF3;
     }
 
     .case-impact .case-label {
@@ -805,73 +810,271 @@
       max-width: 920px;
     }
 
-    /* LEAD FORM */
+    /* ADVANCED */
+    .advanced-section {
+      display: none;
+      padding: 80px 0;
+      background: var(--light);
+      color: #111;
+    }
+
+    .advanced-section.is-visible {
+      display: block;
+    }
+
+    .advanced-section .section-subtitle {
+      color: #4A5C6D;
+    }
+
+    .advanced-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 22px;
+      margin-top: 30px;
+    }
+
+    .adv-card {
+      background: #FFFFFF;
+      border: 1px solid #E4EAF0;
+      border-radius: 22px;
+      padding: 24px;
+      box-shadow: 0 10px 26px rgba(11,24,36,0.06);
+      transition: all 0.25s ease;
+    }
+
+    .adv-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 18px 40px rgba(11,24,36,0.10);
+      border-color: #D5DEE7;
+    }
+
+    .adv-card h3 {
+      font-size: 1.34rem;
+      font-weight: 800;
+      margin-bottom: 8px;
+      letter-spacing: -0.02em;
+    }
+
+    .adv-card .adv-context {
+      color: #5D6F7F;
+      margin-bottom: 14px;
+      font-size: 0.98rem;
+      font-weight: 500;
+    }
+
+    .adv-btn {
+      display: inline-block;
+      border: none;
+      background: var(--slate);
+      color: var(--white);
+      border-radius: 10px;
+      padding: 10px 16px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      margin-bottom: 14px;
+    }
+
+    .adv-btn:hover {
+      background: #1B2B44;
+      box-shadow: 0 10px 22px rgba(11,24,36,0.12);
+    }
+
+    .adv-btn.active {
+      background: var(--orange);
+      box-shadow: 0 10px 24px rgba(255,107,0,0.18);
+    }
+
+    .adv-content {
+      display: none;
+      border-top: 1px solid #E8EDF2;
+      padding-top: 14px;
+      margin-top: 6px;
+    }
+
+    .adv-content.open {
+      display: block;
+    }
+
+    .adv-service {
+      padding: 12px 0;
+      border-bottom: 1px solid #EDF2F6;
+    }
+
+    .adv-service:last-child {
+      border-bottom: none;
+    }
+
+    .adv-service h4 {
+      font-size: 1.03rem;
+      margin-bottom: 6px;
+      color: #111;
+    }
+
+    .adv-service p {
+      color: #5A6B7A;
+      font-size: 0.95rem;
+      margin-bottom: 4px;
+      line-height: 1.65;
+    }
+
+    .adv-service .impact {
+      color: #16263A;
+      font-weight: 700;
+    }
+
+    .advanced-final {
+      margin-top: 24px;
+      color: #243648;
+      font-weight: 700;
+      font-size: 1rem;
+      max-width: 900px;
+    }
+
+    /* REQUEST DISCUSSION */
+    .lead-request-section {
+      background: #06163A;
+      padding: 64px 0 58px;
+    }
+
+    .lead-request-content {
+      max-width: 1180px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .lead-request-content h2 {
+      max-width: 900px;
+      margin: 0 auto 18px;
+      font-size: clamp(2.1rem, 4vw, 3.5rem);
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      color: #FFFFFF;
+    }
+
+    .request-lead {
+      max-width: 900px;
+      margin: 0 auto 32px;
+      font-size: 1.05rem;
+      line-height: 1.76;
+      color: rgba(255,255,255,0.84);
+    }
+
+    .request-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(280px, 1fr));
+      gap: 24px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .request-card {
+      min-height: 188px;
+      padding: 24px 22px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,0.10);
+      background: rgba(255,255,255,0.02);
+      transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+      text-align: left;
+    }
+
+    .request-card strong {
+      display: block;
+      margin-bottom: 10px;
+      font-size: 1.04rem;
+      line-height: 1.35;
+      color: #FFFFFF;
+    }
+
+    .request-card p {
+      margin: 0;
+      font-size: 0.97rem;
+      line-height: 1.68;
+      color: rgba(255,255,255,0.78);
+    }
+
+    .request-card:nth-child(1):hover {
+      border-color: rgba(79,70,229,0.75);
+      background: rgba(79,70,229,0.08);
+      box-shadow: 0 16px 34px rgba(79,70,229,0.16);
+      transform: translateY(-4px);
+    }
+
+    .request-card:nth-child(2):hover {
+      border-color: rgba(255,107,0,0.78);
+      background: rgba(255,107,0,0.08);
+      box-shadow: 0 16px 34px rgba(255,107,0,0.16);
+      transform: translateY(-4px);
+    }
+
+    .request-card:nth-child(3):hover {
+      border-color: rgba(190,242,100,0.60);
+      background: rgba(190,242,100,0.08);
+      box-shadow: 0 16px 34px rgba(190,242,100,0.12);
+      transform: translateY(-4px);
+    }
+
+    /* BRIDGE */
+    .section-bridge {
+      padding: 46px 0 50px;
+      background: #FFFFFF;
+      text-align: center;
+    }
+
+    .section-bridge .final-inner {
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    .section-bridge h2 {
+      color: #0F172A;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      line-height: 1.05;
+      margin-bottom: 14px;
+      letter-spacing: -0.03em;
+    }
+
+    .section-bridge .hook {
+      color: #334155;
+      font-size: 1.06rem;
+      font-weight: 600;
+      max-width: 760px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+
+    /* FORM */
     .lead-form-section {
-      padding: 88px 0;
+      padding: 92px 0;
       background:
         radial-gradient(circle at top left, rgba(79,70,229,0.14), transparent 34%),
         radial-gradient(circle at bottom right, rgba(190,242,100,0.08), transparent 30%),
-        #0f172a;
+        #0F172A;
       border-top: 1px solid rgba(255,255,255,0.06);
     }
 
-    .lead-form-wrap {
-      display: grid;
-      grid-template-columns: 1.05fr 0.95fr;
-      gap: 36px;
-      align-items: start;
-    }
-
-    .lead-form-intro {
-      color: #fff;
-    }
-
-    .lead-form-intro h2 {
-      font-size: clamp(2rem, 4vw, 3rem);
-      line-height: 1.08;
-      margin-bottom: 18px;
-      color: #ffffff;
-      max-width: 760px;
-    }
-
-    .lead-form-intro p {
-      font-size: 1.04rem;
-      line-height: 1.75;
-      color: rgba(255,255,255,0.78);
-      max-width: 760px;
-      margin-bottom: 22px;
-    }
-
-    .lead-list {
-      margin-top: 20px;
-      padding-left: 18px;
-      color: rgba(255,255,255,0.8);
-    }
-
-    .lead-list li {
-      margin-bottom: 10px;
-      line-height: 1.6;
-    }
-
     .lead-form-card {
+      max-width: 760px;
+      margin: 0 auto;
       background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.10);
       border-radius: 26px;
-      padding: 28px;
+      padding: 30px;
       box-shadow: 0 24px 60px rgba(0,0,0,0.28);
       backdrop-filter: blur(10px);
     }
 
     .form-card-top h3 {
-      font-size: 1.45rem;
+      font-size: 1.5rem;
       margin-bottom: 10px;
-      color: #ffffff;
+      color: #FFFFFF;
+      line-height: 1.2;
     }
 
     .form-card-top p {
-      color: rgba(255,255,255,0.72);
-      line-height: 1.65;
-      margin-bottom: 22px;
+      color: rgba(255,255,255,0.74);
+      line-height: 1.7;
+      margin-bottom: 24px;
     }
 
     .retail-check-form {
@@ -889,7 +1092,7 @@
     .form-row label {
       font-size: 0.96rem;
       font-weight: 600;
-      color: #ffffff;
+      color: #FFFFFF;
     }
 
     .retail-check-form input,
@@ -900,10 +1103,11 @@
       border-radius: 14px;
       border: 1px solid rgba(255,255,255,0.12);
       background: rgba(15,23,42,0.78);
-      color: #ffffff;
+      color: #FFFFFF;
       font-size: 0.98rem;
       outline: none;
       transition: border-color 0.25s ease, box-shadow 0.25s ease;
+      font-family: inherit;
     }
 
     .retail-check-form input::placeholder,
@@ -914,8 +1118,14 @@
     .retail-check-form input:focus,
     .retail-check-form select:focus,
     .retail-check-form textarea:focus {
-      border-color: rgba(255,107,0,0.8);
+      border-color: rgba(255,107,0,0.80);
       box-shadow: 0 0 0 4px rgba(255,107,0,0.12);
+    }
+
+    .btn-full {
+      width: 100%;
+      justify-content: center;
+      margin-top: 4px;
     }
 
     .form-alt-contact {
@@ -930,61 +1140,13 @@
     .email-line {
       font-weight: 700;
       margin: 6px 0;
-      color: #ffffff;
+      color: #FFFFFF;
     }
 
     .form-note {
       font-size: 0.88rem;
       line-height: 1.6;
       color: rgba(255,255,255,0.56);
-    }
-
-    .btn-full {
-      width: 100%;
-      justify-content: center;
-    }
-
-    /* FINAL CTA */
-    .final-section {
-      padding: 80px 0;
-      background: #eef3f7;
-      color: #111;
-      border-top: 1px solid #dde6ee;
-    }
-
-    .section-bridge {
-      padding: 60px 0 70px;
-      background: #ffffff;
-      text-align: center;
-    }
-
-    .bridge-text {
-      font-size: 1.05rem;
-      line-height: 1.6;
-      color: #475569;
-      max-width: 700px;
-      margin: 0 auto;
-    }
-
-    .final-inner {
-      text-align: center;
-      max-width: 920px;
-      margin: 0 auto;
-    }
-
-    .final-inner h2 {
-  font-size: clamp(2.2rem, 4.5vw, 3.5rem);
-  line-height: 1.04;
-  letter-spacing: -0.035em;
-  margin-bottom: 16px;
-  color: #0f172a; /* 🔥 asta e cheia */
-}
-
-    .final-inner .hook {
-      font-size: 1.08rem;
-      color: #4a5c6d;
-      max-width: 780px;
-      margin: 0 auto 26px;
     }
 
     /* FOOTER */
@@ -1003,7 +1165,7 @@
     }
 
     .footer-name {
-      color: #dbe4ee;
+      color: #DBE4EE;
       font-weight: 600;
     }
 
@@ -1014,7 +1176,7 @@
       padding: 11px 18px;
       border-radius: 999px;
       border: 1px solid rgba(255,255,255,0.14);
-      color: #ffffff;
+      color: #FFFFFF;
       font-weight: 700;
       transition: all 0.25s ease;
     }
@@ -1025,19 +1187,25 @@
     }
 
     /* RESPONSIVE */
-    @media (max-width: 980px) {
-      .audience-grid,
+    @media (max-width: 1080px) {
+      .intro-wrap,
       .services-grid,
-      .advanced-grid,
-      .format-cards,
       .case-grid,
-      .lead-form-wrap {
+      .request-grid {
         grid-template-columns: 1fr;
       }
 
-      .audit-entry-inner {
+      .entry-point-top {
         flex-direction: column;
         align-items: flex-start;
+      }
+    }
+
+    @media (max-width: 980px) {
+      .audience-grid,
+      .advanced-grid,
+      .format-cards {
+        grid-template-columns: 1fr;
       }
 
       .hero {
@@ -1045,29 +1213,39 @@
       }
 
       .lead-form-card {
-        padding: 22px;
+        padding: 24px;
       }
     }
 
     @media (max-width: 640px) {
       .hero {
         min-height: auto;
-        padding: 72px 18px;
+        padding: 78px 18px;
       }
 
+      .section,
       .audience-section,
       .services-section,
+      .entry-point-section,
       .advanced-section,
       .visual-section,
-      .final-section,
       .case-studies-section,
+      .lead-request-section,
       .lead-form-section {
         padding: 56px 0;
       }
 
       .container,
       .visual-content {
-        width: min(1180px, calc(100% - 28px));
+        width: min(var(--container), calc(100% - 28px));
+      }
+
+      .intro-main,
+      .intro-side,
+      .entry-point-box,
+      .visual-content,
+      .lead-form-card {
+        padding: 22px;
       }
 
       .atypical-box {
@@ -1083,335 +1261,7 @@
         width: 100%;
         max-width: 340px;
       }
-
-      .visual-content {
-        padding: 24px;
-      }
     }
-    .lead-form-section {
-  padding: 100px 0;
-}
-
-.lead-form-card {
-  max-width: 620px;
-  margin: 0 auto;
-}
-    .lead-form-card {
-  max-width: 720px;
-  margin: 0 auto;
-}
-    .lead-request-section {
-  padding: 64px 0 56px;
-  background: #06163a;
-}
-
-.lead-request-section .lead-form-intro {
-  max-width: 760px;
-}
-
-.lead-request-section .lead-form-intro h2 {
-  font-size: clamp(2rem, 4.2vw, 3.2rem);
-  line-height: 1.08;
-  margin-bottom: 18px;
-}
-
-.lead-request-section .lead-form-intro p {
-  max-width: 760px;
-  font-size: 1.05rem;
-  line-height: 1.7;
-  margin-bottom: 22px;
-}
-
-.lead-request-section .lead-list {
-  max-width: 760px;
-}
-
-.lead-request-section .lead-list li {
-  margin-bottom: 12px;
-}
-   .section-bridge {
-  padding: 42px 0 46px;
-  background: #ffffff;
-  text-align: center;
-}
-
-.section-bridge .final-inner {
-  max-width: 860px;
-}
-
-.section-bridge h2 {
-  color: #0f172a;
-  font-size: clamp(2rem, 4vw, 3.2rem);
-  line-height: 1.05;
-  margin-bottom: 14px;
-}
-
-.section-bridge .hook {
-  color: #334155;
-  font-size: 1.06rem;
-  font-weight: 600;
-  max-width: 760px;
-  margin: 0 auto;
-} 
-  .lead-request-section {
-  padding: 56px 0 52px;
-  background: #06163a;
-}
-
-.lead-request-section .lead-form-intro {
-  max-width: 760px;
-}
-
-.lead-request-section .section-label {
-  margin-bottom: 10px;
-}
-
-.lead-request-section .lead-form-intro h2 {
-  font-size: clamp(1.9rem, 3.6vw, 2.9rem);
-  line-height: 1.08;
-  letter-spacing: -0.03em;
-  margin-bottom: 20px;
-  max-width: 760px;
-}
-
-.lead-request-section .lead-form-intro p {
-  max-width: 760px;
-  font-size: 1.02rem;
-  line-height: 1.7;
-  margin-bottom: 22px;
-  color: rgba(255,255,255,0.82);
-}
-
-.lead-request-section .lead-list {
-  max-width: 760px;
-  padding-left: 20px;
-}
-
-.lead-request-section .lead-list li {
-  margin-bottom: 12px;
-  line-height: 1.65;
-  color: rgba(255,255,255,0.86);
-}  
-    color: rgba(255,255,255,0.75);
-}
-
-/* 🔥 HOVER DIFERENTIAT */
-.request-card:nth-child(1):hover {
-  border-color: rgba(255,107,0,0.6);
-  box-shadow: 0 12px 28px rgba(255,107,0,0.15);
-  transform: translateY(-4px);
-}
-
-.request-card:nth-child(2):hover {
-  border-color: rgba(79,70,229,0.6);
-  box-shadow: 0 12px 28px rgba(79,70,229,0.15);
-  transform: translateY(-4px);
-}
-
-.request-card:nth-child(3):hover {
-  border-color: rgba(190,242,100,0.5);
-  box-shadow: 0 12px 28px rgba(190,242,100,0.12);
-  transform: translateY(-4px);
-}
-    @media (max-width: 900px) {
-  .request-grid {
-    grid-template-columns: 1fr;
-  }
-}
-  .request-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-  margin-top: 30px;
-}  
-    .request-card {
-  padding: 22px;
-  border-radius: 14px;
-  border: 1px solid rgba(255,255,255,0.08);
-  background: rgba(255,255,255,0.02);
-  transition: all 0.25s ease;
-}
-
-.request-card strong {
-  display: block;
-  margin-bottom: 6px;
-}
-
-.request-card:hover {
-  border: 1px solid rgba(79,70,229,0.6); /* indigo */
-  background: rgba(79,70,229,0.08);
-  transform: translateY(-4px);
-}
-   .lead-form-intro p {
-  max-width: 700px;
-} 
-   .request-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-  margin: 40px auto 0;
-  max-width: 900px;
-} 
-  .lead-form-intro h2 {
-  max-width: 900px;
-}  
-    .lead-form-intro {
-  max-width: 1100px;
-}
-  .request-card:first-child {
-  border: 1px solid rgba(79,70,229,0.6);
-  background: rgba(79,70,229,0.08);
-  transform: translateY(-4px);
-}  
-    .request-card:hover {
-  border: 1px solid rgba(79,70,229,0.6);
-  background: rgba(79,70,229,0.08);
-  transform: translateY(-4px);
-}
-    .request-card strong {
-  font-weight: 600;
-  font-size: 1.05rem;
-}
-.lead-request-section .container {
-  max-width: 1200px;
-  margin: 0 auto;
-}
-.lead-form-intro {
-  max-width: 1100px;
-  margin: 0 auto;
-}
-.request-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-  margin: 40px auto 0;
-  max-width: 1000px;
-}
- 
-.request-card:hover {
-  border: 1px solid rgba(255,255,255,0.2);
-  background: rgba(255,255,255,0.03);
-  transform: translateY(-4px);
-}
-  /* REQUEST - RESET CLEAN */
-.lead-request-section {
-  background: #06163a;
-  padding: 58px 0 56px;
-}
-
-.lead-request-section .container {
-  width: min(1320px, calc(100% - 56px));
-  margin: 0 auto;
-}
-
-.lead-request-content {
-  max-width: 1180px;
-  margin: 0 auto;
-}
-
-.lead-request-content .section-label {
-  margin-bottom: 12px;
-}
-
-.lead-request-content h2 {
-  max-width: 980px;
-  font-size: clamp(2.1rem, 4vw, 3.6rem);
-  line-height: 1.06;
-  letter-spacing: -0.03em;
-  margin-bottom: 18px;
-  color: #ffffff;
-}
-
-.request-lead {
-  max-width: 980px;
-  font-size: 1.05rem;
-  line-height: 1.7;
-  color: rgba(255,255,255,0.84);
-  margin-bottom: 30px;
-}
-
-.request-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 24px;
-  max-width: 1080px;
-  margin: 0 auto;
-}
-
-.request-card {
-  min-height: 180px;
-  padding: 24px 22px;
-  border-radius: 18px;
-  border: 1px solid rgba(255,255,255,0.10);
-  background: rgba(255,255,255,0.02);
-  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
-}
-
-.request-card strong {
-  display: block;
-  margin-bottom: 10px;
-  font-size: 1.04rem;
-  line-height: 1.35;
-  color: #ffffff;
-}
-
-.request-card p {
-  margin: 0;
-  font-size: 0.97rem;
-  line-height: 1.65;
-  color: rgba(255,255,255,0.78);
-}
-
-.request-card:nth-child(1):hover {
-  border-color: rgba(79,70,229,0.75);
-  background: rgba(79,70,229,0.08);
-  box-shadow: 0 16px 34px rgba(79,70,229,0.16);
-  transform: translateY(-4px);
-}
-
-.request-card:nth-child(2):hover {
-  border-color: rgba(255,107,0,0.78);
-  background: rgba(255,107,0,0.08);
-  box-shadow: 0 16px 34px rgba(255,107,0,0.16);
-  transform: translateY(-4px);
-}
-
-.request-card:nth-child(3):hover {
-  border-color: rgba(190,242,100,0.55);
-  background: rgba(190,242,100,0.08);
-  box-shadow: 0 16px 34px rgba(190,242,100,0.10);
-  transform: translateY(-4px);
-}
-
-@media (max-width: 980px) {
-  .lead-request-section .container {
-    width: min(1180px, calc(100% - 28px));
-  }
-
-  .request-grid {
-    grid-template-columns: 1fr;
-    max-width: 760px;
-  }
-
-  .request-card {
-    min-height: auto;
-  }
-}  
-    .request-grid {
-  grid-template-columns: repeat(3, minmax(280px, 1fr));
-  max-width: 1180px;
-}
-
-.request-card {
-  min-height: 188px;
-}
-
-.request-card:nth-child(3):hover {
-  border-color: rgba(190,242,100,0.6);
-  background: rgba(190,242,100,0.08);
-  box-shadow: 0 16px 34px rgba(190,242,100,0.12);
-  transform: translateY(-4px);
-}
   </style>
 </head>
 <body>
@@ -1422,7 +1272,11 @@
       <h1>Reports show numbers.<br>The shelf shows where you lose money.</h1>
 
       <p class="subtitle">
-        Sales decline in Excel, but the real loss happens in-store — daily, invisibly.
+        Sales may decline in Excel, but the real loss happens in-store — daily, silently, and often without immediate visibility.
+      </p>
+
+      <p class="hero-note">
+        Retail Check is built to verify execution where revenue, margin and listing stability are actually won or lost: on the shelf.
       </p>
 
       <div class="cta-wrap">
@@ -1433,10 +1287,51 @@
     </div>
   </section>
 
+  <!-- WHAT IS RETAIL CHECK -->
+  <section class="intro-section">
+    <div class="container">
+      <div class="intro-wrap">
+        <div class="intro-main">
+          <div class="section-label">What it is</div>
+          <h2 class="section-title">An independent in-store verification service for suppliers who need real control.</h2>
+
+          <p>
+            <span class="notranslate" translate="no">Retail Check</span> helps identify execution gaps, availability issues, pricing inconsistencies,
+            visibility problems and category pressure before they turn into lost sales, margin erosion or listing risk.
+          </p>
+
+          <p>
+            It is designed for situations where internal reports are no longer enough, field execution is difficult to validate,
+            or the market reality needs to be checked directly — quickly, objectively and without noise.
+          </p>
+
+          <p>
+            The goal is not more reporting. The goal is commercial clarity: what is really happening in-store, where control is breaking,
+            and what requires immediate correction.
+          </p>
+        </div>
+
+        <div class="intro-side">
+          <div>
+            <h3>Typical signals that call for a <span class="notranslate" translate="no">Retail Check</span></h3>
+            <p>When the market starts sending signals that reports cannot fully explain, direct verification becomes necessary.</p>
+          </div>
+
+          <div class="signal-list">
+            <div class="signal-item">Sales underperform while listings appear “intact” on paper</div>
+            <div class="signal-item">Promotion budgets are spent, but execution looks uneven in-store</div>
+            <div class="signal-item">Availability or visibility seems weaker than internal reporting suggests</div>
+            <div class="signal-item">Competitive pressure is increasing and response speed is too slow</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- AUDIENCE -->
   <section class="audience-section">
     <div class="container">
-      <div class="audience-top">
+      <div class="section-header">
         <h2 class="section-title">Who needs an extra pair of eyes?</h2>
         <p class="audience-note">Two different situations. The same problem: lack of real control.</p>
       </div>
@@ -1449,17 +1344,21 @@
           </div>
 
           <p class="aud-short">
-            You don’t have a local team and you can’t see what is happening in stores.
+            You do not have a local team in Romania, or you need independent market validation beyond what formal reporting can show.
           </p>
 
           <button class="toggle-btn" onclick="toggleBlock('aud1', this, event)">See how it helps</button>
 
           <div class="aud-more" id="aud1">
-            <p><strong>• No local team in Romania</strong><br>
-            I become your direct presence in the market and confirm whether your HQ strategy is reflected in real in-store execution.</p>
+            <p>
+              <strong>• No local team in Romania</strong><br>
+              I become your direct presence in the market and confirm whether your HQ strategy is actually reflected in real in-store execution.
+            </p>
 
-            <p><strong>• You have a local team, but want real control</strong><br>
-            I independently verify execution and validate whether the information coming from the field reflects reality, not just formal reporting.</p>
+            <p>
+              <strong>• You have a local team, but want a second layer of control</strong><br>
+              I independently verify execution and validate whether the information coming from the field reflects reality, not only formal reporting.
+            </p>
           </div>
         </div>
 
@@ -1470,59 +1369,39 @@
           </div>
 
           <p class="aud-short">
-            You have field teams, but you are not sure you see the full reality.
+            You already have field teams, but you are not fully sure you see the complete commercial reality in-store.
           </p>
 
           <button class="toggle-btn" onclick="toggleBlock('aud2', this, event)">See how it helps</button>
 
           <div class="aud-more" id="aud2">
-            <p><strong>• You have a field team</strong><br>
-            You get an independent validation of execution, beyond internal reports.</p>
+            <p>
+              <strong>• You have a field team</strong><br>
+              You get an independent validation of execution beyond internal reporting, escalation routines or standard merchandising feedback.
+            </p>
 
-            <p><strong>• You want real control over execution</strong><br>
-            I identify where differences appear between what is reported and what actually exists in reality.</p>
+            <p>
+              <strong>• You want real control over execution</strong><br>
+              I identify where differences appear between what is reported and what actually exists in-store — before those gaps become commercial losses.
+            </p>
           </div>
         </div>
       </div>
 
       <p class="aud-proof">
-        “In most field checks, I identify execution issues in more than 30–50% of locations.”
+        “In many field checks, execution issues appear in more than 30–50% of the verified locations.”
       </p>
     </div>
   </section>
 
-  <!-- SERVICES -->
+  <!-- CORE SERVICES -->
   <section class="services-section">
     <div class="container">
-
-      <div class="audit-entry">
-        <div class="audit-entry-inner">
-          <div class="audit-entry-copy">
-            <div class="eyebrow">Recommended starting point</div>
-            <h3>Audit Comercial Express – 90 minutes</h3>
-            <p>
-              When the problem is not yet fully clear, start with a focused diagnostic.
-              It helps you see where execution breaks, where reports diverge from reality,
-              and what deserves immediate action.
-            </p>
-
-            <div class="audit-points">
-              <span>Execution gaps</span>
-              <span>Reality vs reports</span>
-              <span>Immediate priorities</span>
-            </div>
-          </div>
-
-          <a href="/retail-audit/" class="btn-primary">
-            See the 90-minute audit
-          </a>
-        </div>
-      </div>
-
-      <div class="services-header">
-        <h2 class="section-title">Commercial control services</h2>
+      <div class="section-header">
+        <div class="section-label">Core services</div>
+        <h2 class="section-title">Commercial control services built around verification, entry and continuity.</h2>
         <p class="section-subtitle">
-          Three forms of intervention for three different moments: when you lose control, when you enter the market, and when you want to keep it.
+          Three forms of intervention for three different moments: when control is already slipping, when market entry must be validated, and when execution needs to stay protected over time.
         </p>
       </div>
 
@@ -1538,7 +1417,7 @@
               <li>Real shelf presence (listed vs actual)</li>
               <li>Promotional execution</li>
               <li>Positioning and visibility</li>
-              <li>Competitive pressure</li>
+              <li>Competitive pressure at shelf</li>
               <li>Stock vs reality discrepancies</li>
             </ul>
 
@@ -1558,7 +1437,7 @@
         </div>
 
         <div class="service-card entry" onclick="toggleServiceCard(this)">
-          <h3>Market Entry</h3>
+          <h3>Entry Validation</h3>
           <div class="service-tag">Market entry without assumptions</div>
           <p>You do not enter a market you do not understand.</p>
 
@@ -1566,7 +1445,7 @@
             <p><strong>👉 What we check:</strong></p>
             <ul>
               <li>Category structure</li>
-              <li>Real prices</li>
+              <li>Real shelf prices</li>
               <li>Promotional policies by retail chain</li>
               <li>Differences between retail chains</li>
               <li>Access level and entry barriers</li>
@@ -1581,7 +1460,7 @@
             </ul>
 
             <p><strong>👉 Impact:</strong><br>
-            You no longer enter the market “blind.”</p>
+            You no longer enter the market blind or structurally mispositioned.</p>
 
             <p style="margin-top:10px;"><em>The analysis can be expanded depending on specific requests.</em></p>
           </div>
@@ -1617,171 +1496,234 @@
           </div>
         </div>
       </div>
+    </div>
+  </section>
 
-      <div class="atypical-box">
-        <div>
-          <h3>Do you want to see how this works in practice?</h3>
-          <p>Three concise examples showing how execution, pricing and control affect real commercial outcomes in retail.</p>
+  <!-- DIAGNOSTIC COMMERCIAL EXPRESS -->
+  <section class="entry-point-section">
+    <div class="container">
+      <div class="entry-point-box">
+        <div class="entry-point-top">
+          <div class="entry-point-copy">
+            <div class="eyebrow">Recommended entry point</div>
+            <h2>Diagnostic Comercial Express – 90 minutes</h2>
+            <p>
+              Not every situation requires a full field intervention from day one.
+              When the problem is still unclear, start with a focused diagnostic.
+            </p>
+            <p>
+              It helps isolate where control is breaking, where reports diverge from reality,
+              and what deserves immediate action before a wider intervention is defined.
+            </p>
+
+            <div class="audit-points">
+              <span>Execution gaps</span>
+              <span>Reality vs reports</span>
+              <span>Immediate priorities</span>
+            </div>
+          </div>
+
+          <a href="/retail-audit/" class="btn-primary">
+            See the 90-minute audit
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FORMAT -->
+  <section class="visual-section">
+    <div class="visual-content">
+      <div class="eyebrow">Format</div>
+      <h2>One-time or recurring.</h2>
+      <p class="lead">
+        The service can be delivered as a one-time check or as continuous monitoring, depending on your need for control, speed of reaction and visibility over time.
+      </p>
+
+      <div class="format-cards">
+        <div class="format-card">
+          <h3>Retail Check</h3>
+          <p>One-time verification to quickly understand why market results do not reflect the plan and where execution is already breaking.</p>
         </div>
 
-        <button type="button" class="btn-secondary" id="caseToggleBtn" onclick="toggleCaseStudies(this)">
-          See case examples
-        </button>
+        <div class="format-card">
+          <h3>Retail Monitoring</h3>
+          <p>Monthly, quarterly or seasonal monitoring for critical periods such as Easter, Christmas, launches, relistings or promotional waves.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TOGGLES ABOVE CASE / ADVANCED -->
+  <section class="services-section" style="padding-top: 0;">
+    <div class="container">
+      <div class="toggle-boxes-wrap">
+        <div class="atypical-box">
+          <div>
+            <h3>Do you want to see how this works in practice?</h3>
+            <p>Three concise examples showing how execution, pricing and control affect real commercial outcomes in retail.</p>
+          </div>
+
+          <button type="button" class="btn-secondary" id="caseToggleBtn" onclick="toggleCaseStudies(this)">
+            See case examples
+          </button>
+        </div>
+
+        <div class="atypical-box case-box">
+          <div>
+            <h3>Do you have an atypical situation?</h3>
+            <p>We can build a verification adapted to your needs, your category and your level of complexity.</p>
+          </div>
+
+          <button type="button" class="btn-secondary" id="advancedToggleBtn" onclick="toggleAdvancedSection(this)">
+            See advanced checks
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CASE STUDIES -->
+  <section class="case-studies-section" id="caseStudies">
+    <div class="container">
+      <div class="case-header">
+        <div class="eyebrow">Selected case examples</div>
+        <h2 class="section-title">How this works in practice</h2>
+        <p class="section-subtitle">
+          Three examples of how execution, pricing and control affect real commercial outcomes in retail.
+        </p>
       </div>
 
-      <section class="case-studies-section" id="caseStudies" style="display: none;">
-        <div class="container">
-          <div class="case-header">
-            <div class="eyebrow">Selected case examples</div>
-            <h2 class="section-title">How this works in practice</h2>
-            <p class="section-subtitle">
-              Three examples of how execution, pricing and control affect real commercial outcomes in retail.
+      <div class="case-grid">
+        <article class="case-card">
+          <div class="case-tag execution">Execution</div>
+          <h3>Eliminating hidden losses caused by weak in-store execution</h3>
+
+          <div class="case-block">
+            <span class="case-label">Challenge</span>
+            <p class="case-text">
+              A supplier was facing underperforming sales, although internal reporting suggested that listing and stock levels were in place.
             </p>
           </div>
 
-          <div class="case-grid">
-            <article class="case-card">
-              <div class="case-tag execution">Execution</div>
-              <h3>Eliminating hidden losses caused by weak in-store execution</h3>
-
-              <div class="case-block">
-                <span class="case-label">Challenge</span>
-                <p class="case-text">
-                  A supplier was facing underperforming sales, although internal reporting suggested that listing and stock levels were in place.
-                </p>
-              </div>
-
-              <div class="case-block">
-                <span class="case-label">What we found</span>
-                <ul class="case-list">
-                  <li>25% of listed SKUs were physically missing from shelf, despite appearing as “in stock” in the store system</li>
-                  <li>Planogram compliance was only 60%, with products often compressed or moved to lower shelves</li>
-                  <li>Backroom stock was not being transferred to shelf on time due to internal replenishment issues</li>
-                </ul>
-              </div>
-
-              <div class="case-block">
-                <span class="case-label">Actions & results</span>
-                <ul class="case-list">
-                  <li>Operational bottlenecks in the replenishment flow were identified, and a simple rapid-alert mechanism was defined together with the client’s team</li>
-                  <li>Store-level reaction time was significantly improved through corrective action on shelf execution</li>
-                  <li>In parallel, bottlenecks in the supply cycle were removed by optimizing the replenishment flow</li>
-                  <li>Execution deviations were clarified and alignment with agreed standards was restored</li>
-                  <li>Planogram compliance returned to 95% within the first 30 days</li>
-                </ul>
-              </div>
-
-              <div class="case-impact">
-                <span class="case-label">Impact</span>
-                <p>A direct 12–15% uplift in sales was achieved simply by restoring product availability at shelf.</p>
-              </div>
-            </article>
-
-            <article class="case-card">
-              <div class="case-tag strategy">Strategy</div>
-              <h3>Aligning price and margin before market entry</h3>
-
-              <div class="case-block">
-                <span class="case-label">Context</span>
-                <p class="case-text">
-                  The client was preparing for listing in a major retail chain, relying on theoretical assumptions regarding price positioning and category dynamics. Real-market validation was required to avoid a structurally unprofitable entry.
-                </p>
-              </div>
-
-              <div class="case-block">
-                <span class="case-label">What we did</span>
-                <ul class="case-list">
-                  <li>Conducted comparative shelf analysis across relevant modern trade channels</li>
-                  <li>Mapped the price architecture of the category (entry, mid, premium) and defined the real market benchmark</li>
-                  <li>Assessed promotional intensity through field observation and historical review of promotional catalogues over recent months</li>
-                </ul>
-              </div>
-
-              <div class="case-block">
-                <span class="case-label">What we found</span>
-                <ul class="case-list">
-                  <li>Promotional pressure was approximately 20% higher than initially expected</li>
-                  <li>The planned price positioning was not aligned with the actual competitive reality in market</li>
-                </ul>
-              </div>
-
-              <div class="case-block">
-                <span class="case-label">Actions & results</span>
-                <ul class="case-list">
-                  <li>The reference price was adjusted by +7% to reflect real competitive dynamics</li>
-                  <li>The client entered negotiation based on market reality rather than internal assumptions</li>
-                </ul>
-              </div>
-
-              <div class="case-impact">
-                <span class="case-label">Impact</span>
-                <p>An estimated ~15% revenue loss was avoided by correcting price positioning before listing.</p>
-              </div>
-            </article>
-
-            <article class="case-card">
-              <div class="case-tag control">Control</div>
-              <h3>Protecting market share through continuous execution monitoring</h3>
-
-              <div class="case-block">
-                <span class="case-label">Context</span>
-                <p class="case-text">
-                  After the initial success of the listing, shelf performance began to deteriorate gradually. The client was at risk of losing premium positioning and negotiated shelf space.
-                </p>
-              </div>
-
-              <div class="case-block">
-                <span class="case-label">What we monitored</span>
-                <ul class="case-list">
-                  <li>Planogram compliance over time</li>
-                  <li>Promotional execution</li>
-                  <li>Product availability during peak periods</li>
-                  <li>Competitive behavior at shelf</li>
-                </ul>
-              </div>
-
-              <div class="case-block">
-                <span class="case-label">What we found</span>
-                <ul class="case-list">
-                  <li>Progressive deterioration in planogram compliance</li>
-                  <li>Replenishment delays, particularly during weekends</li>
-                  <li>Inconsistent promotional execution in key locations</li>
-                </ul>
-              </div>
-
-              <div class="case-block">
-                <span class="case-label">Actions & results</span>
-                <ul class="case-list">
-                  <li>Critical execution deviations were identified and corrective mechanisms were activated at store and field-team level</li>
-                  <li>Promotional compliance improved from 65% to 98% through focused intervention and rapid reporting</li>
-                  <li>Product availability during critical periods was stabilized, significantly reducing the risk of Out-of-Stock</li>
-                  <li>Shelf execution was stabilized in higher-risk locations</li>
-                </ul>
-              </div>
-
-              <div class="case-impact">
-                <span class="case-label">Impact</span>
-                <p>Consistent shelf visibility was maintained, preventing shopper migration to competing brands caused by lack of availability.</p>
-              </div>
-            </article>
+          <div class="case-block">
+            <span class="case-label">What we found</span>
+            <ul class="case-list">
+              <li>25% of listed SKUs were physically missing from shelf, despite appearing as “in stock” in the store system</li>
+              <li>Planogram compliance was only 60%, with products often compressed or moved to lower shelves</li>
+              <li>Backroom stock was not being transferred to shelf on time due to internal replenishment issues</li>
+            </ul>
           </div>
 
-          <p class="case-closing">
-            The issue is rarely a lack of resources. It is the lack of a control and reaction mechanism.
-          </p>
-        </div>
-      </section>
+          <div class="case-block">
+            <span class="case-label">Actions & results</span>
+            <ul class="case-list">
+              <li>Operational bottlenecks in the replenishment flow were identified, and a simple rapid-alert mechanism was defined together with the client’s team</li>
+              <li>Store-level reaction time was significantly improved through corrective action on shelf execution</li>
+              <li>In parallel, bottlenecks in the supply cycle were removed by optimizing the replenishment flow</li>
+              <li>Execution deviations were clarified and alignment with agreed standards was restored</li>
+              <li>Planogram compliance returned to 95% within the first 30 days</li>
+            </ul>
+          </div>
 
-      <div class="atypical-box case-box">
-        <div>
-          <h3>Do you have an atypical situation?</h3>
-          <p>We can build a verification adapted to your needs and your level of complexity.</p>
-        </div>
+          <div class="case-impact">
+            <span class="case-label">Impact</span>
+            <p>A direct 12–15% uplift in sales was achieved simply by restoring product availability at shelf.</p>
+          </div>
+        </article>
 
-        <button type="button" class="btn-secondary" id="advancedToggleBtn" onclick="toggleAdvancedSection(this)">
-          See advanced checks
-        </button>
+        <article class="case-card">
+          <div class="case-tag strategy">Strategy</div>
+          <h3>Aligning price and margin before market entry</h3>
+
+          <div class="case-block">
+            <span class="case-label">Context</span>
+            <p class="case-text">
+              The client was preparing for listing in a major retail chain, relying on theoretical assumptions regarding price positioning and category dynamics. Real-market validation was required to avoid a structurally unprofitable entry.
+            </p>
+          </div>
+
+          <div class="case-block">
+            <span class="case-label">What we did</span>
+            <ul class="case-list">
+              <li>Conducted comparative shelf analysis across relevant modern trade channels</li>
+              <li>Mapped the price architecture of the category (entry, mid, premium) and defined the real market benchmark</li>
+              <li>Assessed promotional intensity through field observation and historical review of promotional catalogues over recent months</li>
+            </ul>
+          </div>
+
+          <div class="case-block">
+            <span class="case-label">What we found</span>
+            <ul class="case-list">
+              <li>Promotional pressure was approximately 20% higher than initially expected</li>
+              <li>The planned price positioning was not aligned with the actual competitive reality in market</li>
+            </ul>
+          </div>
+
+          <div class="case-block">
+            <span class="case-label">Actions & results</span>
+            <ul class="case-list">
+              <li>The reference price was adjusted by +7% to reflect real competitive dynamics</li>
+              <li>The client entered negotiation based on market reality rather than internal assumptions</li>
+            </ul>
+          </div>
+
+          <div class="case-impact">
+            <span class="case-label">Impact</span>
+            <p>An estimated ~15% revenue loss was avoided by correcting price positioning before listing.</p>
+          </div>
+        </article>
+
+        <article class="case-card">
+          <div class="case-tag control">Control</div>
+          <h3>Protecting market share through continuous execution monitoring</h3>
+
+          <div class="case-block">
+            <span class="case-label">Context</span>
+            <p class="case-text">
+              After the initial success of the listing, shelf performance began to deteriorate gradually. The client was at risk of losing premium positioning and negotiated shelf space.
+            </p>
+          </div>
+
+          <div class="case-block">
+            <span class="case-label">What we monitored</span>
+            <ul class="case-list">
+              <li>Planogram compliance over time</li>
+              <li>Promotional execution</li>
+              <li>Product availability during peak periods</li>
+              <li>Competitive behavior at shelf</li>
+            </ul>
+          </div>
+
+          <div class="case-block">
+            <span class="case-label">What we found</span>
+            <ul class="case-list">
+              <li>Progressive deterioration in planogram compliance</li>
+              <li>Replenishment delays, particularly during weekends</li>
+              <li>Inconsistent promotional execution in key locations</li>
+            </ul>
+          </div>
+
+          <div class="case-block">
+            <span class="case-label">Actions & results</span>
+            <ul class="case-list">
+              <li>Critical execution deviations were identified and corrective mechanisms were activated at store and field-team level</li>
+              <li>Promotional compliance improved from 65% to 98% through focused intervention and rapid reporting</li>
+              <li>Product availability during critical periods was stabilized, significantly reducing the risk of Out-of-Stock</li>
+              <li>Shelf execution was stabilized in higher-risk locations</li>
+            </ul>
+          </div>
+
+          <div class="case-impact">
+            <span class="case-label">Impact</span>
+            <p>Consistent shelf visibility was maintained, preventing shopper migration to competing brands caused by lack of availability.</p>
+          </div>
+        </article>
       </div>
+
+      <p class="case-closing">
+        The issue is rarely a lack of resources. It is the lack of a control and reaction mechanism.
+      </p>
     </div>
   </section>
 
@@ -1804,7 +1746,7 @@
             <div class="adv-service">
               <h4>Integrity Audit (Discreet Check)</h4>
               <p><strong>What it does:</strong> independent verification of real execution.</p>
-              <p class="impact"><strong>Impact:</strong> you eliminate “beautified” reporting.</p>
+              <p class="impact"><strong>Impact:</strong> you eliminate beautified reporting.</p>
             </div>
 
             <div class="adv-service">
@@ -1821,7 +1763,7 @@
 
             <div class="adv-service">
               <h4>Mystery Spot-Check</h4>
-              <p><strong>What it does:</strong> unannounced, targeted check.</p>
+              <p><strong>What it does:</strong> unannounced, targeted verification.</p>
               <p class="impact"><strong>Impact:</strong> you see the exact field reality.</p>
             </div>
           </div>
@@ -1924,147 +1866,117 @@
     </div>
   </section>
 
-  <!-- FORMAT -->
-  <section class="visual-section">
-    <div class="visual-content">
-      <div class="eyebrow">One-time control or ongoing monitoring</div>
-      <h2>One-time or recurring.</h2>
-      <p class="lead">
-        The service can be delivered as a one-time check or as continuous monitoring, depending on your need for control and visibility.
-      </p>
+  <!-- REQUEST -->
+  <section class="lead-request-section">
+    <div class="container">
+      <div class="lead-request-content">
+        <div class="section-label">Request</div>
+        <h2>Request a confidential discussion about in-store execution.</h2>
 
-      <div class="format-cards">
-        <div class="format-card">
-          <h3>Retail Check</h3>
-          <p>One-time verification to quickly understand why market results do not reflect the plan.</p>
-        </div>
+        <p class="request-lead">
+          If you see signals that execution, availability, pricing or visibility in-store do not match what you see in reports, we can quickly assess the situation and determine whether Retail Check is the right intervention.
+        </p>
 
-        <div class="format-card">
-          <h3>Retail Monitoring</h3>
-          <p>Monthly, quarterly, or seasonal monitoring for critical periods such as Easter or Christmas.</p>
+        <div class="request-grid">
+          <div class="request-card">
+            <strong>No generic presentations.</strong>
+            <p>Applied discussion on your real market situation, not a theoretical sales pitch.</p>
+          </div>
+
+          <div class="request-card">
+            <strong>No automatic engagement.</strong>
+            <p>We first clarify whether the audit makes sense, in what format, and at what level of depth.</p>
+          </div>
+
+          <div class="request-card">
+            <strong>Confidential.</strong>
+            <p>All information remains strictly between us and is treated with full commercial discretion.</p>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- FORM -->
-<!-- REQUEST -->
-<section class="lead-request-section">
-  <div class="container">
-    <div class="lead-request-content">
-      <div class="section-label">Request</div>
+  <!-- BRIDGE -->
+  <section class="section-bridge">
+    <div class="container final-inner">
+      <h2>Do not lose control gradually. Recover it now.</h2>
 
-      <h2>Request a confidential discussion about in-store execution.</h2>
-
-      <p class="request-lead">
-        If you see signals that execution, availability, pricing or visibility in-store
-        do not match what you see in reports, we can quickly assess the situation
-        and determine whether Retail Check is the right intervention.
+      <p class="hook">
+        Most companies do not lose control overnight. They lose it gradually — through small execution gaps that remain unverified until they become visible in revenue, margin or listing performance.
       </p>
+    </div>
+  </section>
 
-      <div class="request-grid">
-        <div class="request-card">
-          <strong>No generic presentations.</strong>
-          <p>Applied discussion on your real market situation.</p>
+  <!-- FORM -->
+  <section class="lead-form-section" id="request-audit">
+    <div class="container">
+      <div class="lead-form-card">
+        <div class="form-card-top">
+          <h3>Request an initial assessment</h3>
+          <p>
+            Share a few details and I will come back with a clear recommendation on fit, format and the most useful next step.
+          </p>
         </div>
 
-        <div class="request-card">
-          <strong>No automatic engagement.</strong>
-          <p>We first clarify whether the audit makes sense for you.</p>
-        </div>
+        <form action="https://formspree.io/f/mqegnrej" method="POST" class="retail-check-form">
+          <input type="hidden" name="_subject" value="New Retail Check request">
+          <input type="hidden" name="_cc" value="dan.v.chiculita@gmail.com">
 
-        <div class="request-card">
-          <strong>Confidential.</strong>
-          <p>All information remains strictly between us.</p>
+          <div class="form-row">
+            <label for="name">Name</label>
+            <input id="name" type="text" name="Name" placeholder="Your name" required>
+          </div>
+
+          <div class="form-row">
+            <label for="company">Company</label>
+            <input id="company" type="text" name="Company" placeholder="Company name">
+          </div>
+
+          <div class="form-row">
+            <label for="email">Email</label>
+            <input id="email" type="email" name="Email" placeholder="name@company.com" required>
+          </div>
+
+          <div class="form-row">
+            <label for="phone">Phone</label>
+            <input id="phone" type="text" name="Phone" placeholder="+40 xxx xxx xxx">
+          </div>
+
+          <div class="form-row">
+            <label for="interest">What are you interested in?</label>
+            <select id="interest" name="Interest" required>
+              <option value="">Select an option</option>
+              <option>Retail Check (one-time)</option>
+              <option>Retail Monitoring (recurring)</option>
+              <option>Entry Validation</option>
+              <option>Availability / OOS audit</option>
+              <option>Pricing / promotion / execution audit</option>
+              <option>I need a clarification call</option>
+            </select>
+          </div>
+
+          <div class="form-row">
+            <label for="message">Brief context</label>
+            <textarea id="message" name="Message" rows="5" placeholder="Describe the situation briefly..." required></textarea>
+          </div>
+
+          <button type="submit" class="btn-primary btn-full">
+            Submit request
+          </button>
+        </form>
+
+        <div class="form-alt-contact">
+          <p>Prefer email? Write directly:</p>
+          <p class="email-line">dan.v.chiculita@gmail.com</p>
+          <p class="form-note">
+            I reply within 24–48h · Full confidentiality.
+          </p>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- BRIDGE -->
-<section class="section-bridge">
-  <div class="container final-inner">
-    <h2>Do not lose control gradually. Recover it now.</h2>
-
-    <p class="hook">
-      Most companies do not lose control overnight.
-      They lose it gradually — without realizing it.
-    </p>
-  </div>
-</section>
-
-<!-- FORM -->
-<section class="lead-form-section" id="request-audit">
-  <div class="container">
-    <div class="lead-form-card">
-
-      <div class="form-card-top">
-        <h3>Request an initial assessment</h3>
-        <p>
-          Share a few details and I will come back with a clear recommendation
-          on fit, format, and the next best step.
-        </p>
-      </div>
-
-      <form action="https://formspree.io/f/mqegnrej" method="POST" class="retail-check-form">
-        <input type="hidden" name="_subject" value="New Retail Check request">
-        <input type="hidden" name="_cc" value="dan.v.chiculita@gmail.com">
-
-        <div class="form-row">
-          <label for="name">Name</label>
-          <input id="name" type="text" name="Name" placeholder="Your name" required>
-        </div>
-
-        <div class="form-row">
-          <label for="company">Company</label>
-          <input id="company" type="text" name="Company" placeholder="Company name">
-        </div>
-
-        <div class="form-row">
-          <label for="email">Email</label>
-          <input id="email" type="email" name="Email" placeholder="name@company.com" required>
-        </div>
-
-        <div class="form-row">
-          <label for="phone">Phone</label>
-          <input id="phone" type="text" name="Phone" placeholder="+40 xxx xxx xxx">
-        </div>
-
-        <div class="form-row">
-          <label for="interest">What are you interested in?</label>
-          <select id="interest" name="Interest" required>
-            <option value="">Select an option</option>
-            <option>Retail Check (one-time)</option>
-            <option>Retail Monitoring (recurring)</option>
-            <option>Availability / OOS audit</option>
-            <option>Pricing / promotion / execution audit</option>
-            <option>I need a clarification call</option>
-          </select>
-        </div>
-
-        <div class="form-row">
-          <label for="message">Brief context</label>
-          <textarea id="message" name="Message" rows="5" placeholder="Describe the situation briefly..." required></textarea>
-        </div>
-
-        <button type="submit" class="btn-primary btn-full">
-          Submit request
-        </button>
-      </form>
-
-      <div class="form-alt-contact">
-        <p>Prefer email? Write directly:</p>
-        <p class="email-line">dan.v.chiculita@gmail.com</p>
-        <p class="form-note">
-          I reply within 24–48h · Full confidentiality.
-        </p>
-      </div>
-
-    </div>
-  </div>
-</section>
-  
   <!-- FOOTER -->
   <footer class="footer">
     <div class="container footer-inner">
@@ -2106,9 +2018,9 @@
 
     function toggleCaseStudies(btn) {
       const section = document.getElementById('caseStudies');
-      const isVisible = section.style.display === 'block';
+      const isVisible = section.classList.contains('is-visible');
 
-      section.style.display = isVisible ? 'none' : 'block';
+      section.classList.toggle('is-visible', !isVisible);
       btn.classList.toggle('active', !isVisible);
       btn.textContent = isVisible ? 'See case examples' : 'Hide case examples';
     }
