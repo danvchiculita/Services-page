@@ -1,0 +1,2246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Retail Check | Dan Chiculiță</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --indigo: #4F46E5;
+      --orange: #FF6B00;
+      --slate: #0F172A;
+      --slate-2: #1E293B;
+      --slate-3: #16253f;
+      --light: #F4F7FA;
+      --white: #FFFFFF;
+      --text-soft: #CBD5E1;
+      --text-muted: #93A4B6;
+      --line-dark: rgba(255,255,255,0.08);
+      --line-light: #E4EAF0;
+      --card-dark: #111F35;
+      --card-mid: #172842;
+      --shadow-dark: 0 18px 40px rgba(0,0,0,0.20);
+      --shadow-light: 0 14px 32px rgba(11,24,36,0.08);
+      --radius-xl: 26px;
+      --radius-lg: 22px;
+      --radius-md: 18px;
+      --radius-sm: 14px;
+      --container: 1180px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--slate);
+      color: var(--white);
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .container {
+      width: min(var(--container), calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .section {
+      padding: 84px 0;
+    }
+
+    .section-header {
+      margin-bottom: 34px;
+    }
+
+    .section-title {
+      font-size: clamp(2rem, 4vw, 3.1rem);
+      line-height: 1.04;
+      font-weight: 800;
+      letter-spacing: -0.035em;
+      margin-bottom: 14px;
+    }
+
+    .section-subtitle {
+      color: #D8E2EC;
+      font-size: 1.04rem;
+      max-width: 820px;
+    }
+
+    .eyebrow,
+    .section-label {
+      font-size: 0.8rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+    }
+
+    .notranslate {
+      white-space: nowrap;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      cursor: pointer;
+      border: none;
+      transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease, border-color 0.25s ease;
+      font-weight: 700;
+    }
+
+    .btn-primary {
+      padding: 15px 28px;
+      border-radius: 999px;
+      background: var(--orange);
+      color: var(--white);
+      box-shadow: 0 12px 30px rgba(255,107,0,0.26);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      background: #ff7b20;
+      box-shadow: 0 18px 38px rgba(255,107,0,0.32);
+    }
+
+    .btn-secondary {
+      padding: 12px 18px;
+      border-radius: 12px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      color: var(--white);
+    }
+
+    .btn-secondary:hover {
+      transform: translateY(-2px);
+      background: rgba(255,255,255,0.10);
+    }
+
+    .btn-secondary.active {
+      background: rgba(255,255,255,0.14);
+      box-shadow: 0 0 0 5px rgba(255,255,255,0.04);
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 90vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+      padding: 90px 20px;
+      background:
+        linear-gradient(rgba(9,19,33,0.76), rgba(9,19,33,0.80)),
+        radial-gradient(circle at top left, rgba(79,70,229,0.16), transparent 28%),
+        radial-gradient(circle at bottom right, rgba(255,107,0,0.10), transparent 30%),
+        url('supermarket.png') center center / cover no-repeat;
+    }
+
+    .hero-inner {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .hero h1 {
+      font-size: clamp(3rem, 6.6vw, 5.7rem);
+      line-height: 0.95;
+      font-weight: 800;
+      letter-spacing: -0.05em;
+      margin-bottom: 28px;
+      text-wrap: balance;
+    }
+
+    .hero .subtitle {
+      font-size: clamp(1.16rem, 2.2vw, 1.55rem);
+      color: #EFF5FB;
+      font-weight: 600;
+      max-width: 860px;
+      margin: 0 auto;
+      line-height: 1.38;
+    }
+
+    .hero-note {
+      margin: 20px auto 0;
+      max-width: 720px;
+      font-size: 1rem;
+      color: rgba(255,255,255,0.72);
+      line-height: 1.7;
+    }
+
+    .cta-wrap {
+      margin-top: 38px;
+    }
+
+    /* INTRO / WHAT IS */
+    .intro-section {
+      background: linear-gradient(180deg, #15253D 0%, #101C31 100%);
+      padding: 78px 0 76px;
+    }
+
+    .intro-wrap {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 26px;
+      align-items: stretch;
+    }
+
+    .intro-main,
+    .intro-side {
+      border-radius: var(--radius-xl);
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: var(--shadow-dark);
+    }
+
+    .intro-main {
+      padding: 34px;
+      background: linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
+    }
+
+    .intro-main p {
+      color: #D7E2EC;
+      font-size: 1.05rem;
+      line-height: 1.78;
+      margin-bottom: 18px;
+      max-width: 780px;
+    }
+
+    .intro-main p:last-child {
+      margin-bottom: 0;
+    }
+
+    .intro-side {
+      padding: 28px;
+      background: linear-gradient(135deg, rgba(79,70,229,0.14), rgba(255,107,0,0.08));
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .intro-side h3 {
+      font-size: 1.28rem;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      margin-bottom: 8px;
+    }
+
+    .intro-side p {
+      color: #E7EEF6;
+      font-size: 0.98rem;
+      line-height: 1.7;
+    }
+
+    .signal-list {
+      display: grid;
+      gap: 10px;
+    }
+
+    .signal-item {
+      padding: 14px 16px;
+      border-radius: 14px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.08);
+      color: #F3F7FB;
+      font-size: 0.96rem;
+      font-weight: 600;
+    }
+
+    /* AUDIENCE */
+    .audience-section {
+      padding: 80px 0 62px;
+      background: var(--slate);
+    }
+
+    .audience-note {
+      font-size: 1.05rem;
+      color: #DCE6EF;
+      margin-top: 6px;
+      font-weight: 500;
+    }
+
+    .audience-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 22px;
+      margin-top: 26px;
+    }
+
+    .aud-card {
+      background: var(--card-mid);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+      box-shadow: 0 10px 28px rgba(0,0,0,0.14);
+      display: flex;
+      flex-direction: column;
+      min-height: 100%;
+    }
+
+    .aud-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.22);
+    }
+
+    .aud-card.external:hover {
+      border-color: rgba(79,70,229,0.50);
+      box-shadow: 0 20px 42px rgba(79,70,229,0.18);
+    }
+
+    .aud-card.local:hover {
+      border-color: rgba(255,107,0,0.52);
+      box-shadow: 0 20px 42px rgba(255,107,0,0.16);
+    }
+
+    .aud-card-head {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .aud-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--white);
+      flex-shrink: 0;
+    }
+
+    .aud-card.external .aud-icon {
+      background: var(--indigo);
+    }
+
+    .aud-card.local .aud-icon {
+      background: var(--orange);
+    }
+
+    .aud-card h3 {
+      font-size: 1.5rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+
+    .aud-short {
+      color: #D6E1EB;
+      font-size: 1.02rem;
+      margin-bottom: 16px;
+    }
+
+    .toggle-btn {
+      display: inline-block;
+      border: none;
+      color: var(--white);
+      font-weight: 700;
+      padding: 10px 16px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+      margin-top: auto;
+      margin-bottom: 14px;
+      align-self: flex-start;
+    }
+
+    .aud-card.external .toggle-btn {
+      background: var(--indigo);
+    }
+
+    .aud-card.local .toggle-btn {
+      background: #E56A1D;
+    }
+
+    .toggle-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 10px 22px rgba(0,0,0,0.18);
+    }
+
+    .toggle-btn.active {
+      outline: 2px solid rgba(255,255,255,0.15);
+      box-shadow: 0 0 0 5px rgba(255,255,255,0.04);
+    }
+
+    .aud-more {
+      display: none;
+      color: #D7E1EB;
+      font-size: 0.98rem;
+      line-height: 1.68;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding-top: 14px;
+      margin-top: 6px;
+    }
+
+    .aud-more p + p {
+      margin-top: 14px;
+    }
+
+    .aud-proof {
+      margin-top: 24px;
+      color: #F4F8FB;
+      font-size: 1rem;
+      font-weight: 600;
+      max-width: 950px;
+    }
+
+    /* SERVICES */
+    .services-section {
+      padding: 78px 0;
+      background: linear-gradient(180deg, #16253F 0%, #101C31 100%);
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 22px;
+      margin-top: 24px;
+    }
+
+    .service-card {
+      background: var(--card-dark);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: var(--radius-lg);
+      padding: 26px;
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+      box-shadow: 0 12px 28px rgba(0,0,0,0.15);
+      display: flex;
+      flex-direction: column;
+      cursor: pointer;
+      overflow: hidden;
+    }
+
+    .service-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(255,255,255,0.14);
+      box-shadow: 0 20px 42px rgba(0,0,0,0.24);
+    }
+
+    .service-card.retail:hover {
+      box-shadow: 0 20px 42px rgba(255,107,0,0.18);
+      border-color: rgba(255,107,0,0.42);
+    }
+
+    .service-card.entry:hover {
+      box-shadow: 0 20px 42px rgba(79,70,229,0.20);
+      border-color: rgba(79,70,229,0.42);
+    }
+
+    .service-card.monitor:hover {
+      box-shadow: 0 20px 42px rgba(190,242,100,0.12);
+      border-color: rgba(190,242,100,0.28);
+    }
+
+    .service-card h3 {
+      font-size: 1.52rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 6px;
+    }
+
+    .service-tag {
+      color: #ffffff;
+      font-size: 0.98rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .service-card p {
+      color: #D5DFEB;
+      font-size: 1rem;
+      margin-bottom: 8px;
+    }
+
+    .service-expand {
+      display: none;
+      margin-top: 16px;
+      padding-top: 16px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .service-expand ul {
+      padding-left: 18px;
+      margin: 8px 0 12px;
+      color: #DBE5EF;
+    }
+
+    .service-expand li {
+      margin-bottom: 6px;
+    }
+
+    .service-expand p {
+      color: #DBE5EF;
+      line-height: 1.68;
+    }
+
+    .service-card.open .service-expand {
+      display: block;
+    }
+
+    /* DIAGNOSTIC ENTRY */
+    .entry-point-section {
+      padding: 78px 0;
+      background: #0E182C;
+      border-top: 1px solid rgba(255,255,255,0.05);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .entry-point-box {
+      padding: 34px;
+      border-radius: 26px;
+      background: linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,107,0,0.08));
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: var(--shadow-dark);
+    }
+
+    .entry-point-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 22px;
+      flex-wrap: wrap;
+    }
+
+    .entry-point-copy {
+      max-width: 780px;
+    }
+
+    .entry-point-copy h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.04;
+      letter-spacing: -0.03em;
+      margin-bottom: 12px;
+    }
+
+    .entry-point-copy p {
+      color: #D9E4EE;
+      font-size: 1.03rem;
+      line-height: 1.75;
+      margin-bottom: 14px;
+    }
+
+    .audit-points {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .audit-points span {
+      display: inline-flex;
+      align-items: center;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.10);
+      color: #F3F7FB;
+      font-size: 0.92rem;
+      font-weight: 700;
+    }
+
+    /* FORMAT */
+    .visual-section {
+      padding: 80px 0;
+      background: #EEF3F7;
+      color: #111;
+    }
+
+    .visual-content {
+      width: min(var(--container), calc(100% - 40px));
+      margin: 0 auto;
+      background: #FFFFFF;
+      border: 1px solid #E3EAF0;
+      border-radius: 26px;
+      padding: 34px;
+      box-shadow: 0 16px 40px rgba(11,24,36,0.08);
+    }
+
+    .visual-content h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.04;
+      letter-spacing: -0.03em;
+      margin-bottom: 14px;
+    }
+
+    .visual-content .lead {
+      color: #536577;
+      font-size: 1.05rem;
+      margin-bottom: 24px;
+      max-width: 760px;
+      line-height: 1.74;
+    }
+
+    .format-cards {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .format-card {
+      padding: 24px;
+      border-radius: 18px;
+      background: #F7FAFC;
+      border: 1px solid #E3EAF0;
+    }
+
+    .format-card h3 {
+      font-size: 1.16rem;
+      margin-bottom: 8px;
+      color: #111;
+    }
+
+    .format-card p {
+      color: #58697B;
+      font-size: 0.98rem;
+      line-height: 1.68;
+    }
+
+    /* CASE + ADVANCED TOGGLES */
+    .toggle-boxes-wrap {
+      margin-top: 28px;
+      display: grid;
+      gap: 16px;
+    }
+
+    .atypical-box {
+      padding: 22px 24px;
+      border-radius: 18px;
+      background: linear-gradient(90deg, rgba(255,107,0,0.16) 0%, rgba(255,107,0,0.10) 100%);
+      border: 1px solid rgba(255,107,0,0.28);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      flex-wrap: wrap;
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    }
+
+    .atypical-box:hover {
+      transform: translateY(-4px);
+      border-color: rgba(255,107,0,0.42);
+      box-shadow: 0 18px 40px rgba(255,107,0,0.14);
+    }
+
+    .case-box {
+      background: linear-gradient(90deg, rgba(79,70,229,0.18), rgba(79,70,229,0.08));
+      border: 1px solid rgba(79,70,229,0.3);
+    }
+
+    .case-box:hover {
+      border-color: rgba(79,70,229,0.48);
+      box-shadow: 0 18px 40px rgba(79,70,229,0.16);
+    }
+
+    .atypical-box h3 {
+      font-size: 1.24rem;
+      margin-bottom: 5px;
+    }
+
+    .atypical-box p {
+      color: #E7EDF4;
+      max-width: 760px;
+      line-height: 1.7;
+    }
+
+    /* CASE STUDIES */
+    .case-studies-section {
+      display: none;
+      padding: 80px 0;
+      background: #F4F7FA;
+      color: #111;
+      border-top: 1px solid #E1E8EF;
+      border-bottom: 1px solid #E1E8EF;
+    }
+
+    .case-studies-section.is-visible {
+      display: block;
+    }
+
+    .case-header {
+      margin-bottom: 34px;
+    }
+
+    .case-header .section-subtitle {
+      color: #58697B;
+      max-width: 860px;
+    }
+
+    .case-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    .case-card {
+      background: #FFFFFF;
+      border: 1px solid #E3EAF0;
+      border-radius: 22px;
+      padding: 26px;
+      box-shadow: var(--shadow-light);
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    }
+
+    .case-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 18px 40px rgba(11,24,36,0.10);
+      border-color: #D7E0E8;
+    }
+
+    .case-tag {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.76rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 7px 10px;
+      border-radius: 999px;
+      margin-bottom: 14px;
+    }
+
+    .case-tag.execution {
+      background: rgba(255,107,0,0.12);
+      color: #B65212;
+    }
+
+    .case-tag.strategy {
+      background: rgba(79,70,229,0.10);
+      color: #3D37B8;
+    }
+
+    .case-tag.control {
+      background: rgba(88,140,90,0.12);
+      color: #2F6B34;
+    }
+
+    .case-card h3 {
+      font-size: 1.28rem;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin-bottom: 14px;
+      color: #111827;
+    }
+
+    .case-block {
+      margin-bottom: 16px;
+    }
+
+    .case-label {
+      display: block;
+      font-size: 0.82rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #6B7C8D;
+      margin-bottom: 8px;
+    }
+
+    .case-text {
+      color: #4D5F70;
+      font-size: 0.98rem;
+      line-height: 1.6;
+    }
+
+    .case-list {
+      padding-left: 18px;
+      margin: 0;
+      color: #4D5F70;
+    }
+
+    .case-list li {
+      margin-bottom: 8px;
+      line-height: 1.55;
+    }
+
+    .case-impact {
+      margin-top: 18px;
+      padding: 16px 18px;
+      border-radius: 16px;
+      background: #F8FBFD;
+      border: 1px solid #E5EDF3;
+    }
+
+    .case-impact .case-label {
+      color: #203244;
+      margin-bottom: 6px;
+    }
+
+    .case-impact p {
+      color: #203244;
+      font-weight: 600;
+      line-height: 1.55;
+      margin: 0;
+    }
+
+    .case-closing {
+      margin-top: 28px;
+      font-size: 1rem;
+      font-weight: 700;
+      color: #203244;
+      max-width: 920px;
+    }
+
+    /* ADVANCED */
+    .advanced-section {
+      display: none;
+      padding: 80px 0;
+      background: var(--light);
+      color: #111;
+    }
+
+    .advanced-section.is-visible {
+      display: block;
+    }
+
+    .advanced-section .section-subtitle {
+      color: #4A5C6D;
+    }
+
+    .advanced-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 22px;
+      margin-top: 30px;
+    }
+
+    .adv-card {
+      background: #FFFFFF;
+      border: 1px solid #E4EAF0;
+      border-radius: 22px;
+      padding: 24px;
+      box-shadow: 0 10px 26px rgba(11,24,36,0.06);
+      transition: all 0.25s ease;
+    }
+
+    .adv-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 18px 40px rgba(11,24,36,0.10);
+      border-color: #D5DEE7;
+    }
+
+    .adv-card h3 {
+      font-size: 1.34rem;
+      font-weight: 800;
+      margin-bottom: 8px;
+      letter-spacing: -0.02em;
+    }
+
+    .adv-card .adv-context {
+      color: #5D6F7F;
+      margin-bottom: 14px;
+      font-size: 0.98rem;
+      font-weight: 500;
+    }
+
+    .adv-btn {
+      display: inline-block;
+      border: none;
+      background: var(--slate);
+      color: var(--white);
+      border-radius: 10px;
+      padding: 10px 16px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      margin-bottom: 14px;
+    }
+
+    .adv-btn:hover {
+      background: #1B2B44;
+      box-shadow: 0 10px 22px rgba(11,24,36,0.12);
+    }
+
+    .adv-btn.active {
+      background: var(--orange);
+      box-shadow: 0 10px 24px rgba(255,107,0,0.18);
+    }
+
+    .adv-content {
+      display: none;
+      border-top: 1px solid #E8EDF2;
+      padding-top: 14px;
+      margin-top: 6px;
+    }
+
+    .adv-content.open {
+      display: block;
+    }
+
+    .adv-service {
+      padding: 12px 0;
+      border-bottom: 1px solid #EDF2F6;
+    }
+
+    .adv-service:last-child {
+      border-bottom: none;
+    }
+
+    .adv-service h4 {
+      font-size: 1.03rem;
+      margin-bottom: 6px;
+      color: #111;
+    }
+
+    .adv-service p {
+      color: #5A6B7A;
+      font-size: 0.95rem;
+      margin-bottom: 4px;
+      line-height: 1.65;
+    }
+
+    .adv-service .impact {
+      color: #16263A;
+      font-weight: 700;
+    }
+
+    .advanced-final {
+      margin-top: 24px;
+      color: #243648;
+      font-weight: 700;
+      font-size: 1rem;
+      max-width: 900px;
+    }
+
+    /* REQUEST DISCUSSION */
+    .lead-request-section {
+      background: #06163A;
+      padding: 64px 0 58px;
+    }
+
+    .lead-request-content {
+      max-width: 1180px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .lead-request-content h2 {
+      max-width: 900px;
+      margin: 0 auto 18px;
+      font-size: clamp(2.1rem, 4vw, 3.5rem);
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      color: #FFFFFF;
+    }
+
+    .request-lead {
+      max-width: 900px;
+      margin: 0 auto 32px;
+      font-size: 1.05rem;
+      line-height: 1.76;
+      color: rgba(255,255,255,0.84);
+    }
+
+    .request-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(280px, 1fr));
+      gap: 24px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .request-card {
+      min-height: 188px;
+      padding: 24px 22px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,0.10);
+      background: rgba(255,255,255,0.02);
+      transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+      text-align: left;
+    }
+
+    .request-card strong {
+      display: block;
+      margin-bottom: 10px;
+      font-size: 1.04rem;
+      line-height: 1.35;
+      color: #FFFFFF;
+    }
+
+    .request-card p {
+      margin: 0;
+      font-size: 0.97rem;
+      line-height: 1.68;
+      color: rgba(255,255,255,0.78);
+    }
+
+    .request-card:nth-child(1):hover {
+      border-color: rgba(79,70,229,0.75);
+      background: rgba(79,70,229,0.08);
+      box-shadow: 0 16px 34px rgba(79,70,229,0.16);
+      transform: translateY(-4px);
+    }
+
+    .request-card:nth-child(2):hover {
+      border-color: rgba(255,107,0,0.78);
+      background: rgba(255,107,0,0.08);
+      box-shadow: 0 16px 34px rgba(255,107,0,0.16);
+      transform: translateY(-4px);
+    }
+
+    .request-card:nth-child(3):hover {
+      border-color: rgba(190,242,100,0.60);
+      background: rgba(190,242,100,0.08);
+      box-shadow: 0 16px 34px rgba(190,242,100,0.12);
+      transform: translateY(-4px);
+    }
+
+    /* BRIDGE */
+    .section-bridge {
+      padding: 46px 0 50px;
+      background: #FFFFFF;
+      text-align: center;
+    }
+
+    .section-bridge .final-inner {
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    .section-bridge h2 {
+      color: #0F172A;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      line-height: 1.05;
+      margin-bottom: 14px;
+      letter-spacing: -0.03em;
+    }
+
+    .section-bridge .hook {
+      color: #334155;
+      font-size: 1.06rem;
+      font-weight: 600;
+      max-width: 760px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+
+    /* FORM */
+    .lead-form-section {
+      padding: 92px 0;
+      background:
+        radial-gradient(circle at top left, rgba(79,70,229,0.14), transparent 34%),
+        radial-gradient(circle at bottom right, rgba(190,242,100,0.08), transparent 30%),
+        #0F172A;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .lead-form-card {
+      max-width: 760px;
+      margin: 0 auto;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.10);
+      border-radius: 26px;
+      padding: 30px;
+      box-shadow: 0 24px 60px rgba(0,0,0,0.28);
+      backdrop-filter: blur(10px);
+    }
+
+    .form-card-top h3 {
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+      color: #FFFFFF;
+      line-height: 1.2;
+    }
+
+    .form-card-top p {
+      color: rgba(255,255,255,0.74);
+      line-height: 1.7;
+      margin-bottom: 24px;
+    }
+
+    .retail-check-form {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .form-row {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .form-row label {
+      font-size: 0.96rem;
+      font-weight: 600;
+      color: #FFFFFF;
+    }
+
+    .retail-check-form input,
+    .retail-check-form select,
+    .retail-check-form textarea {
+      width: 100%;
+      padding: 14px 16px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(15,23,42,0.78);
+      color: #FFFFFF;
+      font-size: 0.98rem;
+      outline: none;
+      transition: border-color 0.25s ease, box-shadow 0.25s ease;
+      font-family: inherit;
+    }
+
+    .retail-check-form input::placeholder,
+    .retail-check-form textarea::placeholder {
+      color: rgba(255,255,255,0.42);
+    }
+
+    .retail-check-form input:focus,
+    .retail-check-form select:focus,
+    .retail-check-form textarea:focus {
+      border-color: rgba(255,107,0,0.80);
+      box-shadow: 0 0 0 4px rgba(255,107,0,0.12);
+    }
+
+    .btn-full {
+      width: 100%;
+      justify-content: center;
+      margin-top: 4px;
+    }
+
+    .form-alt-contact {
+      margin-top: 24px;
+      text-align: center;
+    }
+
+    .form-alt-contact p {
+      color: rgba(255,255,255,0.74);
+    }
+
+    .email-line {
+      font-weight: 700;
+      margin: 6px 0;
+      color: #FFFFFF;
+    }
+
+    .form-note {
+      font-size: 0.88rem;
+      line-height: 1.6;
+      color: rgba(255,255,255,0.56);
+    }
+
+    /* FOOTER */
+    .footer {
+      background: var(--slate);
+      padding: 24px 0 32px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .footer-name {
+      color: #DBE4EE;
+      font-weight: 600;
+    }
+
+    .linkedin-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 11px 18px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.14);
+      color: #FFFFFF;
+      font-weight: 700;
+      transition: all 0.25s ease;
+    }
+
+    .linkedin-link:hover {
+      background: rgba(255,255,255,0.08);
+      transform: translateY(-2px);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 1080px) {
+      .intro-wrap,
+      .services-grid,
+      .case-grid,
+      .request-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .entry-point-top {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    @media (max-width: 980px) {
+      .audience-grid,
+      .advanced-grid,
+      .format-cards {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        min-height: 78vh;
+      }
+
+      .lead-form-card {
+        padding: 24px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .hero {
+        min-height: auto;
+        padding: 78px 18px;
+      }
+
+      .section,
+      .audience-section,
+      .services-section,
+      .entry-point-section,
+      .advanced-section,
+      .visual-section,
+      .case-studies-section,
+      .lead-request-section,
+      .lead-form-section {
+        padding: 56px 0;
+      }
+
+      .container,
+      .visual-content {
+        width: min(var(--container), calc(100% - 28px));
+      }
+
+      .intro-main,
+      .intro-side,
+      .entry-point-box,
+      .visual-content,
+      .lead-form-card {
+        padding: 22px;
+      }
+
+      .atypical-box {
+        align-items: flex-start;
+      }
+
+      .footer-inner {
+        justify-content: center;
+        text-align: center;
+      }
+
+      .btn-primary {
+        width: 100%;
+        max-width: 340px;
+      }
+    }
+    .lang-switch {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  display: flex;
+  gap: 10px;
+  z-index: 20;
+}
+
+.lang-switch a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  height: 40px;
+  padding: 0 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.16);
+  background: rgba(15,23,42,0.34);
+  color: #ffffff;
+  font-size: 0.88rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  transition: all 0.25s ease;
+  backdrop-filter: blur(8px);
+}
+
+.lang-switch a:hover {
+  background: rgba(255,255,255,0.10);
+  transform: translateY(-1px);
+}
+
+.lang-switch a.active {
+  background: rgba(255,255,255,0.14);
+  border-color: rgba(255,255,255,0.28);
+}
+
+@media (max-width: 640px) {
+  .lang-switch {
+    top: 16px;
+    right: 16px;
+    gap: 8px;
+  }
+
+  .lang-switch a {
+    min-width: 40px;
+    height: 36px;
+    padding: 0 12px;
+    font-size: 0.8rem;
+  }
+}
+    .lang-switch span {
+  color: rgba(255,255,255,0.4);
+  font-weight: 500;
+}
+  </style>
+</head>
+<body>
+
+  <!-- HERO -->
+ <section class="hero">
+
+  <!-- LANGUAGE SWITCH -->
+  <div class="lang-switch">
+    <a href="index-ro.html" class="active">RO</a>
+    <span>|</span>
+    <a href="index.html">EN</a>
+  </div>
+
+  <div class="hero-inner container">
+    <h1>
+      Rapoartele arată cifre.<br>
+      Raftul arată unde pierzi bani.
+    </h1>
+
+    <p class="subtitle">
+      Scăderea vânzărilor apare în Excel, dar pierderea reală se întâmplă în magazin — zilnic, în tăcere, fără vizibilitate imediată.
+    </p>
+
+    <p class="hero-note">
+      Retail Check este construit pentru a verifica execuția exact acolo unde se câștigă sau se pierd veniturile, marja și stabilitatea listării: la raft.
+    </p>
+
+    <div class="cta-wrap">
+      <a href="#request-audit" class="btn-primary">
+        Solicita un <span class="notranslate" translate="no">Retail Check</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+  <!-- WHAT IS RETAIL CHECK -->
+ <section class="intro-section">
+  <div class="container">
+    <div class="intro-wrap">
+
+      <div class="intro-main">
+        <div class="section-label">Ce este</div>
+        <h2 class="section-title">
+          Un serviciu independent de verificare în magazin pentru companiile care au nevoie de control real.
+        </h2>
+
+        <p>
+          <span class="notranslate" translate="no">Retail Check</span> identifică diferențele dintre ce apare în rapoarte și ce există în realitate:
+          execuție slabă, lipsă de disponibilitate, prețuri nealiniate, vizibilitate redusă sau presiune din partea competiției.
+        </p>
+
+        <p>
+          Este construit pentru situațiile în care informația internă nu mai este suficientă,
+          execuția este dificil de validat sau realitatea din piață trebuie verificată direct — rapid, obiectiv și fără zgomot.
+        </p>
+
+        <p>
+          Obiectivul nu este mai mult raportare. Obiectivul este claritate comercială:
+          ce se întâmplă în magazin, unde pierzi controlul și ce trebuie corectat imediat.
+        </p>
+      </div>
+
+      <div class="intro-side">
+        <div>
+          <h3>
+            Semnale tipice care indică nevoia unui <span class="notranslate" translate="no">Retail Check</span>
+          </h3>
+          <p>
+            Atunci când piața trimite semnale pe care rapoartele nu le pot explica complet, verificarea directă devine necesară.
+          </p>
+        </div>
+
+        <div class="signal-list">
+          <div class="signal-item">Vânzările scad, deși listarea apare „în regulă” în sistem</div>
+          <div class="signal-item">Bugetele promo sunt consumate, dar execuția este inconsistentă</div>
+          <div class="signal-item">Disponibilitatea sau vizibilitatea nu reflectă realitatea raportată</div>
+          <div class="signal-item">Presiunea competiției crește și reacția este prea lentă</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+  <!-- AUDIENCE -->
+  <section class="audience-section">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">Cine are nevoie de un control real în piață?</h2>
+      <p class="audience-note">
+        Două situații diferite. Aceeași problemă: lipsa vizibilității reale.
+      </p>
+    </div>
+
+    <div class="audience-grid">
+
+      <div class="aud-card external">
+        <div class="aud-card-head">
+          <div class="aud-icon">🌍</div>
+          <h3>EXTERN</h3>
+        </div>
+
+        <p class="aud-short">
+          Nu ai echipă locală sau ai nevoie de o validare independentă a realității din piață.
+        </p>
+
+        <button class="toggle-btn" onclick="toggleBlock('aud1', this, event)">
+          Vezi cum te ajută
+        </button>
+
+        <div class="aud-more" id="aud1">
+          <p>
+            <strong>• Nu ai echipă în România</strong><br>
+            Devin prezența ta directă în piață și verific dacă strategia definită la HQ se reflectă în execuția reală din magazine.
+          </p>
+
+          <p>
+            <strong>• Ai echipă locală, dar vrei control real</strong><br>
+            Verific independent execuția și validez dacă informațiile din teren reflectă realitatea, nu doar raportarea formală.
+          </p>
+        </div>
+      </div>
+
+      <div class="aud-card local">
+        <div class="aud-card-head">
+          <div class="aud-icon">🔎</div>
+          <h3>LOCAL</h3>
+        </div>
+
+        <p class="aud-short">
+          Ai echipe în teren, dar nu ai siguranța că vezi imaginea completă.
+        </p>
+
+        <button class="toggle-btn" onclick="toggleBlock('aud2', this, event)">
+          Vezi cum te ajută
+        </button>
+
+        <div class="aud-more" id="aud2">
+          <p>
+            <strong>• Ai echipă de teren</strong><br>
+            Primești o validare independentă a execuției, dincolo de rapoarte interne sau procese standard.
+          </p>
+
+          <p>
+            <strong>• Vrei control real asupra execuției</strong><br>
+            Identific unde apar diferențele între ce se raportează și ce există efectiv în magazin.
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+    <p class="aud-proof">
+      „În majoritatea verificărilor din teren, apar probleme de execuție în peste 30–50% dintre locații.”
+    </p>
+  </div>
+</section>
+
+  <!-- CORE SERVICES -->
+  <section class="services-section">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">Servicii principale</div>
+      <h2 class="section-title">Servicii de control comercial construite în jurul verificării, validării și continuității.</h2>
+      <p class="section-subtitle">
+        Trei forme de intervenție pentru trei momente diferite: când pierzi controlul în piață, când vrei să validezi corect intrarea într-o categorie sau într-un lanț, și când execuția trebuie protejată în timp.
+      </p>
+    </div>
+
+    <div class="services-grid">
+      <div class="service-card retail" onclick="toggleServiceCard(this)">
+        <h3>Retail Check</h3>
+        <div class="service-tag">Audit de impact</div>
+        <p>Radiografia execuției din piață.</p>
+
+        <div class="service-expand">
+          <p><strong>👉 Ce verificăm:</strong></p>
+          <ul>
+            <li>Prezența reală la raft (listat vs existent)</li>
+            <li>Execuția promoțională</li>
+            <li>Poziționarea și vizibilitatea</li>
+            <li>Presiunea competiției la raft</li>
+            <li>Diferențele dintre stocul raportat și realitatea din magazin</li>
+          </ul>
+
+          <p><strong>👉 Ce primești:</strong></p>
+          <ul>
+            <li>Raport detaliat pentru fiecare punct verificat</li>
+            <li>Fotografii din teren</li>
+            <li>Probleme clar identificate</li>
+            <li>Concluzii și recomandări pentru acțiune imediată</li>
+          </ul>
+
+          <p><strong>👉 Impact:</strong><br>
+          Vezi clar unde se pierd vânzările și de ce.</p>
+
+          <p style="margin-top:10px;"><em>Analiza poate fi extinsă în funcție de specificul cererii tale.</em></p>
+        </div>
+      </div>
+
+      <div class="service-card entry" onclick="toggleServiceCard(this)">
+        <h3>Entry Validation</h3>
+        <div class="service-tag">Intrare în piață fără presupuneri</div>
+        <p>Nu intri într-o piață pe care nu o înțelegi.</p>
+
+        <div class="service-expand">
+          <p><strong>👉 Ce verificăm:</strong></p>
+          <ul>
+            <li>Structura reală a categoriei</li>
+            <li>Prețurile reale de la raft</li>
+            <li>Politicile promoționale pe lanțuri de retail</li>
+            <li>Diferențele dintre rețele</li>
+            <li>Nivelul de acces și barierele de intrare</li>
+          </ul>
+
+          <p><strong>👉 Ce primești:</strong></p>
+          <ul>
+            <li>O imagine reală a pieței</li>
+            <li>Benchmark de preț pe produs / categorie / lanț</li>
+            <li>Oportunități și riscuri clar conturate</li>
+            <li>Direcții concrete de intrare</li>
+          </ul>
+
+          <p><strong>👉 Impact:</strong><br>
+          Nu mai intri în piață orbește sau pe o poziționare greșită din start.</p>
+
+          <p style="margin-top:10px;"><em>Analiza poate fi extinsă în funcție de specificul cererii tale.</em></p>
+        </div>
+      </div>
+
+      <div class="service-card monitor" onclick="toggleServiceCard(this)">
+        <h3>Retail Monitoring</h3>
+        <div class="service-tag">Protecția profitului</div>
+        <p>Nu mai pierzi controlul după listare.</p>
+
+        <div class="service-expand">
+          <p><strong>👉 Ce verificăm:</strong></p>
+          <ul>
+            <li>Consistența execuției în timp</li>
+            <li>Disponibilitatea reală</li>
+            <li>Respectarea promoțiilor</li>
+            <li>Evoluția competiției</li>
+            <li>Abaterile recurente</li>
+          </ul>
+
+          <p><strong>👉 Ce primești:</strong></p>
+          <ul>
+            <li>Rapoarte periodice</li>
+            <li>Tendințe și semnale de risc</li>
+            <li>Alerte rapide</li>
+            <li>Recomandări de corecție</li>
+          </ul>
+
+          <p><strong>👉 Impact:</strong><br>
+          Controlezi execuția, nu doar o observi după ce problema a apărut.</p>
+
+          <p style="margin-top:10px;"><em>Analiza poate fi extinsă în funcție de specificul cererii tale.</em></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <!-- DIAGNOSTIC COMMERCIAL EXPRESS -->
+ <section class="entry-point-section">
+  <div class="container">
+    <div class="entry-point-box">
+      <div class="entry-point-top">
+        <div class="entry-point-copy">
+          <div class="eyebrow">Punct de pornire recomandat</div>
+          <h2>Diagnostic Comercial Express – 90 de minute</h2>
+
+          <p>
+            Nu orice situație cere din prima o intervenție extinsă în teren.
+            Atunci când problema nu este încă suficient de clară, începe cu un diagnostic concentrat.
+          </p>
+
+          <p>
+            Acesta te ajută să izolezi unde se rupe controlul,
+            unde rapoartele se îndepărtează de realitate
+            și ce merită tratat imediat înainte de a defini o intervenție mai amplă.
+          </p>
+
+          <div class="audit-points">
+            <span>Goluri de execuție</span>
+            <span>Realitate vs raportare</span>
+            <span>Priorități imediate</span>
+          </div>
+        </div>
+
+        <a href="https://danvchiculita.github.io/retail-diagnostic-comercial/index-ro.html" class="btn-primary">
+          Vezi auditul de 90 de minute
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <!-- FORMAT -->
+ <section class="visual-section">
+  <div class="visual-content">
+    <div class="eyebrow">Format</div>
+    <h2>Punctual sau recurent.</h2>
+    <p class="lead">
+      Serviciul poate fi livrat ca verificare punctuală sau ca monitorizare continuă, în funcție de nivelul de control, viteza de reacție și vizibilitatea de care ai nevoie în timp.
+    </p>
+
+    <div class="format-cards">
+      <div class="format-card">
+        <h3>Retail Check</h3>
+        <p>
+          Verificare punctuală pentru a înțelege rapid de ce rezultatele din piață nu reflectă planul și unde execuția începe deja să se rupă.
+        </p>
+      </div>
+
+      <div class="format-card">
+        <h3>Retail Monitoring</h3>
+        <p>
+          Monitorizare lunară, trimestrială sau sezonieră pentru perioade critice precum Paște, Crăciun, lansări, relistări sau valuri promoționale.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <!-- TOGGLES ABOVE CASE / ADVANCED -->
+  <section class="services-section" style="padding-top: 0;">
+  <div class="container">
+    <div class="toggle-boxes-wrap">
+
+      <div class="atypical-box">
+        <div>
+          <h3>Vrei să vezi cum funcționează în practică?</h3>
+          <p>
+            Trei exemple concise care arată cum execuția, prețul și controlul influențează direct rezultatul comercial în retail.
+          </p>
+        </div>
+
+        <button type="button" class="btn-secondary" id="caseToggleBtn" onclick="toggleCaseStudies(this)">
+          Vezi exemplele
+        </button>
+      </div>
+
+      <div class="atypical-box case-box">
+        <div>
+          <h3>Ai o situație atipică?</h3>
+          <p>
+            Putem construi o verificare adaptată contextului tău, categoriei tale și nivelului real de complexitate.
+          </p>
+        </div>
+
+        <button type="button" class="btn-secondary" id="advancedToggleBtn" onclick="toggleAdvancedSection(this)">
+          Vezi verificările avansate
+        </button>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+  <!-- CASE STUDIES -->
+ <section class="case-studies-section" id="caseStudies" style="display: none;">
+  <div class="container">
+    <div class="case-header">
+      <div class="eyebrow">Exemple din piață</div>
+      <h2 class="section-title">Cum arată în practică</h2>
+      <p class="section-subtitle">
+        Trei situații reale care arată cum execuția, prețul și controlul influențează direct rezultatele comerciale.
+      </p>
+    </div>
+
+    <div class="case-grid">
+
+      <!-- CASE 1 -->
+      <article class="case-card">
+        <div class="case-tag execution">Execuție</div>
+        <h3>Eliminarea pierderilor ascunse generate de execuția slabă în magazin</h3>
+
+        <div class="case-block">
+          <span class="case-label">Context</span>
+          <p class="case-text">
+            Un furnizor înregistra performanțe sub așteptări, deși în rapoarte listarea și stocurile apăreau ca fiind în regulă.
+          </p>
+        </div>
+
+        <div class="case-block">
+          <span class="case-label">Ce am găsit</span>
+          <ul class="case-list">
+            <li>25% dintre SKU-urile listate lipseau fizic de la raft, deși apăreau ca „în stoc” în sistem</li>
+            <li>Respectarea planogramei era de aproximativ 60%, produsele fiind mutate sau comprimate</li>
+            <li>Stocul din backroom nu ajungea la raft din cauza blocajelor interne de reaprovizionare</li>
+          </ul>
+        </div>
+
+        <div class="case-block">
+          <span class="case-label">Acțiuni & rezultate</span>
+          <ul class="case-list">
+            <li>Identificarea blocajelor din fluxul de reaprovizionare și definirea unui mecanism simplu de alertă rapidă</li>
+            <li>Reducerea timpului de reacție la nivel de magazin</li>
+            <li>Corectarea deviațiilor de execuție și realinierea la standarde</li>
+            <li>Creșterea respectării planogramei la 95% în primele 30 de zile</li>
+          </ul>
+        </div>
+
+        <div class="case-impact">
+          <span class="case-label">Impact</span>
+          <p>
+            Creștere directă a vânzărilor de 12–15% obținută exclusiv prin refacerea disponibilității la raft.
+          </p>
+        </div>
+      </article>
+
+      <!-- CASE 2 -->
+      <article class="case-card">
+        <div class="case-tag strategy">Strategie</div>
+        <h3>Alinierea prețului și marjei înainte de intrarea în retail</h3>
+
+        <div class="case-block">
+          <span class="case-label">Context</span>
+          <p class="case-text">
+            Clientul pregătea listarea într-un lanț major, bazându-se pe ipoteze interne despre poziționare și nivel de preț.
+          </p>
+        </div>
+
+        <div class="case-block">
+          <span class="case-label">Ce am făcut</span>
+          <ul class="case-list">
+            <li>Analiză comparativă în magazine pe canale relevante</li>
+            <li>Maparea arhitecturii de preț (entry, mid, premium)</li>
+            <li>Evaluarea intensității promoționale pe baza observațiilor din teren</li>
+          </ul>
+        </div>
+
+        <div class="case-block">
+          <span class="case-label">Ce am găsit</span>
+          <ul class="case-list">
+            <li>Presiunea promoțională era cu ~20% mai mare decât estimările inițiale</li>
+            <li>Poziționarea de preț nu era aliniată cu realitatea din piață</li>
+          </ul>
+        </div>
+
+        <div class="case-block">
+          <span class="case-label">Acțiuni & rezultate</span>
+          <ul class="case-list">
+            <li>Ajustarea prețului de referință cu +7% pentru a reflecta dinamica reală</li>
+            <li>Intrare în negociere bazată pe date reale, nu pe presupuneri</li>
+          </ul>
+        </div>
+
+        <div class="case-impact">
+          <span class="case-label">Impact</span>
+          <p>
+            Evitarea unei pierderi estimate de ~15% din venit prin corectarea poziționării înainte de listare.
+          </p>
+        </div>
+      </article>
+
+      <!-- CASE 3 -->
+      <article class="case-card">
+        <div class="case-tag control">Control</div>
+        <h3>Protejarea cotei de piață prin monitorizare continuă a execuției</h3>
+
+        <div class="case-block">
+          <span class="case-label">Context</span>
+          <p class="case-text">
+            După listare, performanța la raft a început să se deterioreze gradual, punând în risc poziționarea obținută.
+          </p>
+        </div>
+
+        <div class="case-block">
+          <span class="case-label">Ce am monitorizat</span>
+          <ul class="case-list">
+            <li>Respectarea planogramei</li>
+            <li>Execuția promoțiilor</li>
+            <li>Disponibilitatea în perioade critice</li>
+            <li>Comportamentul competiției</li>
+          </ul>
+        </div>
+
+        <div class="case-block">
+          <span class="case-label">Ce am găsit</span>
+          <ul class="case-list">
+            <li>Degradare progresivă a execuției la raft</li>
+            <li>Întârzieri în reaprovizionare, mai ales în weekend</li>
+            <li>Execuție promo inconsistentă</li>
+          </ul>
+        </div>
+
+        <div class="case-block">
+          <span class="case-label">Acțiuni & rezultate</span>
+          <ul class="case-list">
+            <li>Identificarea rapidă a deviațiilor și activarea mecanismelor de corecție</li>
+            <li>Creșterea execuției promo de la 65% la 98%</li>
+            <li>Stabilizarea disponibilității în perioadele critice</li>
+          </ul>
+        </div>
+
+        <div class="case-impact">
+          <span class="case-label">Impact</span>
+          <p>
+            Menținerea vizibilității la raft și prevenirea migrației consumatorilor către competiție.
+          </p>
+        </div>
+      </article>
+
+    </div>
+
+    <p class="case-closing">
+      Problema nu este, de cele mai multe ori, lipsa resurselor. Este lipsa unui mecanism real de control și reacție.
+    </p>
+  </div>
+</section>
+
+  <!-- ADVANCED -->
+  <section class="advanced-section" id="advanced">
+  <div class="container">
+    <div class="eyebrow">Verificări avansate</div>
+    <h2 class="section-title">Ai o situație care nu se vede în rapoarte?</h2>
+    <p class="section-subtitle">
+      Nu toate problemele sunt vizibile în cifre. Unele trebuie verificate direct în piață.
+    </p>
+
+    <div class="advanced-grid">
+
+      <!-- CARD 1 -->
+      <div class="adv-card">
+        <h3>Execuție & Integritate</h3>
+        <p class="adv-context">Control real asupra execuției din teren</p>
+        <button class="adv-btn" onclick="toggleBlock('adv1', this, event)">Vezi categoria</button>
+
+        <div class="adv-content" id="adv1">
+
+          <div class="adv-service">
+            <h4>Audit de integritate (verificare discretă)</h4>
+            <p><strong>Ce face:</strong> verifică independent execuția reală din magazin.</p>
+            <p class="impact"><strong>Impact:</strong> elimini raportarea cosmetizată.</p>
+          </div>
+
+          <div class="adv-service">
+            <h4>Validare execuție agenție</h4>
+            <p><strong>Ce face:</strong> verifică dacă serviciile plătite sunt efectiv livrate.</p>
+            <p class="impact"><strong>Impact:</strong> oprești pierderile din bugete irosite.</p>
+          </div>
+
+          <div class="adv-service">
+            <h4>Verificare backroom</h4>
+            <p><strong>Ce face:</strong> identifică stocul care nu ajunge la raft.</p>
+            <p class="impact"><strong>Impact:</strong> recuperezi vânzări pierdute.</p>
+          </div>
+
+          <div class="adv-service">
+            <h4>Verificare punctuală (spot-check)</h4>
+            <p><strong>Ce face:</strong> control neanunțat pe situații critice.</p>
+            <p class="impact"><strong>Impact:</strong> vezi realitatea exactă din teren.</p>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- CARD 2 -->
+      <div class="adv-card">
+        <h3>Vizibilitate la raft & strategie</h3>
+        <p class="adv-context">Lupta reală pentru spațiu și atenție</p>
+        <button class="adv-btn" onclick="toggleBlock('adv2', this, event)">Vezi categoria</button>
+
+        <div class="adv-content" id="adv2">
+
+          <div class="adv-service">
+            <h4>Audit planogramă</h4>
+            <p><strong>Ce face:</strong> verifică respectarea layout-ului agreat.</p>
+            <p class="impact"><strong>Impact:</strong> recuperezi spațiu pierdut la raft.</p>
+          </div>
+
+          <div class="adv-service">
+            <h4>Share of Eye vs Share of Shelf</h4>
+            <p><strong>Ce face:</strong> analizează vizibilitatea reală, nu doar spațiul ocupat.</p>
+            <p class="impact"><strong>Impact:</strong> crești conversia la raft.</p>
+          </div>
+
+          <div class="adv-service">
+            <h4>Verificare plasări cross-category</h4>
+            <p><strong>Ce face:</strong> identifică plasările care afectează performanța.</p>
+            <p class="impact"><strong>Impact:</strong> protejezi poziționarea brandului.</p>
+          </div>
+
+          <div class="adv-service">
+            <h4>Optimizare layout / planogramă</h4>
+            <p><strong>Ce face:</strong> propune ajustări concrete pentru performanță.</p>
+            <p class="impact"><strong>Impact:</strong> intri mai bine pregătit în negociere.</p>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- CARD 3 -->
+      <div class="adv-card">
+        <h3>Performanță comercială & profit</h3>
+        <p class="adv-context">Unde se pierd banii în realitate</p>
+        <button class="adv-btn" onclick="toggleBlock('adv3', this, event)">Vezi categoria</button>
+
+        <div class="adv-content" id="adv3">
+
+          <div class="adv-service">
+            <h4>Audit pierderi promo (Promo Leaks)</h4>
+            <p><strong>Ce face:</strong> verifică execuția reală a promoțiilor.</p>
+            <p class="impact"><strong>Impact:</strong> nu mai plătești integral pentru execuție parțială.</p>
+          </div>
+
+          <div class="adv-service">
+            <h4>Analiză preț & benchmark</h4>
+            <p><strong>Ce face:</strong> compară poziționarea reală în piață.</p>
+            <p class="impact"><strong>Impact:</strong> reacționezi corect la competiție.</p>
+          </div>
+
+          <div class="adv-service">
+            <h4>Audit rotație & prospețime</h4>
+            <p><strong>Ce face:</strong> verifică dinamica reală a stocului.</p>
+            <p class="impact"><strong>Impact:</strong> reduci pierderile din expirări.</p>
+          </div>
+
+          <div class="adv-service">
+            <h4>Analiză sustenabilitate listare</h4>
+            <p><strong>Ce face:</strong> evaluează riscul înainte de renegociere.</p>
+            <p class="impact"><strong>Impact:</strong> protejezi listarea pe termen mediu.</p>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- CARD 4 -->
+      <div class="adv-card">
+        <h3>Intelligence & lansări</h3>
+        <p class="adv-context">Mișcări tactice în piață</p>
+        <button class="adv-btn" onclick="toggleBlock('adv4', this, event)">Vezi categoria</button>
+
+        <div class="adv-content" id="adv4">
+
+          <div class="adv-service">
+            <h4>Monitorizare competiție</h4>
+            <p><strong>Ce face:</strong> urmărește strategia și execuția competitorilor.</p>
+            <p class="impact"><strong>Impact:</strong> anticipezi mișcările din piață.</p>
+          </div>
+
+          <div class="adv-service">
+            <h4>Analiză rapidă (War Room)</h4>
+            <p><strong>Ce face:</strong> intervenție rapidă în situații critice.</p>
+            <p class="impact"><strong>Impact:</strong> iei decizii pe date, nu pe presiune.</p>
+          </div>
+
+          <div class="adv-service">
+            <h4>Monitorizare lansare produs</h4>
+            <p><strong>Ce face:</strong> verifică execuția în faza de lansare.</p>
+            <p class="impact"><strong>Impact:</strong> corectezi rapid înainte de escaladare.</p>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+    <p class="advanced-final">
+      Putem construi o verificare adaptată situației tale, indiferent de nivelul de complexitate.
+    </p>
+  </div>
+</section>
+  <!-- REQUEST -->
+ <section class="lead-request-section">
+  <div class="container">
+    <div class="lead-request-content">
+      <div class="section-label">Discuție inițială</div>
+
+      <h2>Solicită o discuție confidențială despre execuția din piață.</h2>
+
+      <p class="request-lead">
+        Dacă ai semnale că execuția, disponibilitatea, prețul sau vizibilitatea în magazin
+        nu reflectă ceea ce vezi în rapoarte, putem evalua rapid situația
+        și decide dacă <span class="notranslate" translate="no">Retail Check</span> este intervenția potrivită.
+      </p>
+
+      <div class="request-grid">
+        <div class="request-card">
+          <strong>Fără prezentări generice.</strong>
+          <p>Discuția pleacă de la situația ta reală din piață.</p>
+        </div>
+
+        <div class="request-card">
+          <strong>Fără angajament automat.</strong>
+          <p>Clarificăm mai întâi dacă auditul are sens pentru tine.</p>
+        </div>
+
+        <div class="request-card">
+          <strong>Confidențial.</strong>
+          <p>Informațiile rămân strict între noi.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BRIDGE -->
+<section class="section-bridge">
+  <div class="container final-inner">
+    <h2>Controlul nu se pierde brusc. Se pierde treptat.</h2>
+
+    <p class="hook">
+      Majoritatea companiilor nu pierd controlul peste noapte.
+      Îl pierd în timp — fără să observe momentul în care deviațiile devin structurale.
+    </p>
+  </div>
+</section>
+
+<!-- FORM -->
+<section class="lead-form-section" id="request-audit">
+  <div class="container">
+    <div class="lead-form-card">
+
+      <div class="form-card-top">
+        <h3>Solicită o evaluare inițială</h3>
+        <p>
+          Lasă câteva detalii relevante și revin cu o recomandare clară:
+          dacă există potrivire, ce format are sens și care este următorul pas.
+        </p>
+      </div>
+
+      <form action="https://formspree.io/f/mqegnrej" method="POST" class="retail-check-form">
+        <input type="hidden" name="_subject" value="Solicitare Retail Check">
+
+        <div class="form-row">
+          <label for="name">Nume</label>
+          <input id="name" type="text" name="Name" placeholder="Numele tău" required>
+        </div>
+
+        <div class="form-row">
+          <label for="company">Companie</label>
+          <input id="company" type="text" name="Company" placeholder="Numele companiei">
+        </div>
+
+        <div class="form-row">
+          <label for="email">Email</label>
+          <input id="email" type="email" name="Email" placeholder="email@companie.ro" required>
+        </div>
+
+        <div class="form-row">
+          <label for="phone">Telefon</label>
+          <input id="phone" type="text" name="Phone" placeholder="+40 xxx xxx xxx">
+        </div>
+
+        <div class="form-row">
+          <label for="interest">Ce te interesează?</label>
+          <select id="interest" name="Interest" required>
+            <option value="">Selectează o opțiune</option>
+            <option>Retail Check (verificare punctuală)</option>
+            <option>Retail Monitoring (monitorizare continuă)</option>
+            <option>Audit disponibilitate / OOS</option>
+            <option>Audit preț / promo / execuție</option>
+            <option>Am nevoie de o discuție de clarificare</option>
+          </select>
+        </div>
+
+        <div class="form-row">
+          <label for="message">Context scurt</label>
+          <textarea id="message" name="Message" rows="5" placeholder="Descrie pe scurt situația..." required></textarea>
+        </div>
+
+        <button type="submit" class="btn-primary btn-full">
+          Trimite solicitarea
+        </button>
+      </form>
+
+      <div class="form-alt-contact">
+        <p>Preferi email direct?</p>
+        <p class="email-line">dan.v.chiculita@gmail.com</p>
+        <p class="form-note">
+          Răspund în 24–48h · Confidențialitate totală
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+  <!-- BRIDGE -->
+ <section class="section-bridge">
+  <div class="container final-inner">
+    <h2>Controlul nu se pierde brusc. Se pierde treptat.</h2>
+
+    <p class="hook">
+      Majoritatea companiilor nu pierd controlul peste noapte.
+      Îl pierd în timp — fără să observe momentul în care deviațiile devin structurale.
+    </p>
+  </div>
+</section>
+
+  <!-- FORM -->
+ <section class="lead-form-section" id="request-audit">
+  <div class="container">
+    <div class="lead-form-card">
+
+      <div class="form-card-top">
+        <h3>Solicită o evaluare inițială</h3>
+        <p>
+          Lasă câteva detalii relevante și revin cu o recomandare clară:
+          dacă există potrivire, ce format are sens și care este următorul pas.
+        </p>
+      </div>
+
+      <form action="https://formspree.io/f/mqegnrej" method="POST" class="retail-check-form">
+        <input type="hidden" name="_subject" value="Solicitare Retail Check">
+
+        <div class="form-row">
+          <label for="name">Nume</label>
+          <input id="name" type="text" name="Name" placeholder="Numele tău" required>
+        </div>
+
+        <div class="form-row">
+          <label for="company">Companie</label>
+          <input id="company" type="text" name="Company" placeholder="Numele companiei">
+        </div>
+
+        <div class="form-row">
+          <label for="email">Email</label>
+          <input id="email" type="email" name="Email" placeholder="email@companie.ro" required>
+        </div>
+
+        <div class="form-row">
+          <label for="phone">Telefon</label>
+          <input id="phone" type="text" name="Phone" placeholder="+40 xxx xxx xxx">
+        </div>
+
+        <div class="form-row">
+          <label for="interest">Ce te interesează?</label>
+          <select id="interest" name="Interest" required>
+            <option value="">Selectează o opțiune</option>
+            <option>Retail Check (verificare punctuală)</option>
+            <option>Retail Monitoring (monitorizare continuă)</option>
+            <option>Entry Validation</option>
+            <option>Audit disponibilitate / OOS</option>
+            <option>Audit preț / promo / execuție</option>
+            <option>Am nevoie de o discuție de clarificare</option>
+          </select>
+        </div>
+
+        <div class="form-row">
+          <label for="message">Context scurt</label>
+          <textarea id="message" name="Message" rows="5" placeholder="Descrie pe scurt situația..." required></textarea>
+        </div>
+
+        <button type="submit" class="btn-primary btn-full">
+          Trimite solicitarea
+        </button>
+      </form>
+
+      <div class="form-alt-contact">
+        <p>Preferi email direct?</p>
+        <p class="email-line">dan.v.chiculita@gmail.com</p>
+        <p class="form-note">
+          Răspund în 24–48h · Confidențialitate totală
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+  <!-- FOOTER -->
+ <footer class="footer">
+  <div class="container footer-inner">
+
+    <div class="footer-left">
+      <div class="footer-name">
+        Dan Chiculiță · Retail & IKA Strategy
+      </div>
+      <div class="footer-tagline">
+        Diagnostic. Decizie. Execuție.
+      </div>
+    </div>
+
+    <div class="footer-right">
+      <a class="linkedin-link" href="https://www.linkedin.com/in/danchiculita" target="_blank" rel="noopener noreferrer">
+        LinkedIn
+      </a>
+    </div>
+
+  </div>
+</footer>
+
+ <script>
+  function toggleBlock(id, btn, ev) {
+    if (ev) ev.stopPropagation();
+
+    const target = document.getElementById(id);
+    const isOpen = target.classList.contains('open') || target.style.display === 'block';
+
+    if (target.classList.contains('adv-content')) {
+      target.classList.toggle('open', !isOpen);
+    } else {
+      target.style.display = isOpen ? 'none' : 'block';
+    }
+
+    if (btn) {
+      btn.classList.toggle('active', !isOpen);
+    }
+  }
+
+  function toggleServiceCard(card) {
+    card.classList.toggle('open');
+  }
+
+  function toggleAdvancedSection(btn) {
+    const section = document.getElementById('advanced');
+    const isVisible = section.classList.contains('is-visible');
+
+    section.classList.toggle('is-visible', !isVisible);
+    btn.classList.toggle('active', !isVisible);
+    btn.textContent = isVisible ? 'Vezi verificările avansate' : 'Ascunde verificările avansate';
+  }
+
+  function toggleCaseStudies(btn) {
+    const section = document.getElementById('caseStudies');
+    const isVisible = section.classList.contains('is-visible');
+
+    section.classList.toggle('is-visible', !isVisible);
+    btn.classList.toggle('active', !isVisible);
+    btn.textContent = isVisible ? 'Vezi exemplele' : 'Ascunde exemplele';
+  }
+</script>
+</body>
+</html>
